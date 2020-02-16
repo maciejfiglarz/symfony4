@@ -1,0 +1,48 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        {% if settings['custom-css'] is defined %}
+            <form action="" method="post" class="admin-ads__item">
+                <div class="admin-ads__title">{{ settings['custom-css'].name }}</div>
+                <input type="hidden" name="name" value="{{ settings['custom-css'].name }}"/>
+                <textarea name="value" class="textarea textarea-advertisement">{{ settings['custom-css'].value }}</textarea>
+                <input type="submit" class="button-primary" value="Zmień">
+            </form>
+
+            <form action="" method="post" class="admin-ads__item">
+                <div class="admin-ads__title">{{ settings['app-name'].name }}</div>
+                <input type="hidden" name="name" value="{{ settings['app-name'].name }}"/>
+                <input name="value" class="regular-text" value="{{ settings['app-name'].value }}"/>
+                <input type="submit" class="button-primary" value="Zmień">
+            </form>
+
+            <form action="" method="post" class="admin-ads__item">
+                <div class="admin-ads__title">{{ settings['app-domain'].name }}</div>
+                <input type="hidden" name="name" value="{{ settings['app-domain'].name }}"/>
+                <input name="value" class="regular-text" value="{{ settings['app-domain'].value }}"/>
+                <input type="submit" class="button-primary" value="Zmień">
+            </form>
+
+            <form action="" method="post" class="admin-ads__item">
+                <div class="admin-ads__title">{{ settings['facebook-id'].name }}</div>
+                <input type="hidden" name="name" value="{{ settings['facebook-id'].name }}"/>
+                <input name="value" class="regular-text" value="{{ settings['facebook-id'].value }}"/>
+                <input type="submit" class="button-primary" value="Zmień">
+            </form>
+
+        {% endif %}
+        {% for setting in settings %}
+            {% if setting.name != 'custom-css' and setting.name != 'app-name' and setting.name != 'app-domain' and setting.name != 'facebook-id'  %}
+            <form action="" method="post" class="admin-ads__item">
+                <div class="admin-ads__title">{{ setting.name }}</div>
+                <input type="hidden" name="name" value="{{ setting.name }}"/>
+                <textarea name="value" class="textarea textarea-advertisement">{{ setting.value }}</textarea>
+                <input type="submit" class="button-primary" value="Zmień">
+            </form>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+{% endblock %}

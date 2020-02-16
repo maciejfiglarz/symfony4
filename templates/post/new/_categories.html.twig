@@ -1,0 +1,17 @@
+<div class="create__categories">
+    <div class="field-wrap">
+        <div class="field-label">
+            <div class="field-label__title">Kategorie:</div>
+        </div>
+        <div class="create-categories__wrap">
+            {% for category in categories %}
+                <div id="{{ category.id }}" class="create-categories__item">{{ category.name }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="create-categories__wrap-checkboxes">
+    {% for category in categories %}
+        <input name="category[]" value="newCategory-{{ category.id }}" type="checkbox">
+    {% endfor %}
+</div>

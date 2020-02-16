@@ -1,0 +1,211 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ settingHelper.displaySetting('statute')|raw }}
+{#        <h1 class="page__title">REGULAMIN</h1>#}
+{#        <h3 class="page__chapter">I. Postanowienia ogólne</h3>#}
+{#        <ol class="page__numeric">#}
+{#            <li>Właścicielem i usługodawcą serwisu internetowego pod adresem www.ciekawe.online#}
+{#                (Serwis) jest WEBPERFECTION spółka z ograniczoną odpowiedzialnością z siedzibą#}
+{#                w Olkuszu, adres: ul. Marii Konopnickiej 6/18, 32-300 Olkusz. Sąd rejestrowy: Sąd#}
+{#                Rejonowy dla Krakowa-Śródmieścia w Krakowie, XII Wydział Gospodarczy#}
+{#                Krajowego Rejestru Sądowego, nr KRS: 0000626252, NIP: 6372198154, wysokość#}
+{#                kapitału zakładowego: 5.000,00 złotych (Usługodawca). Dane kontaktowe: adres e-#}
+{#                mail kontakt@ciekawe.online., tel. 668-947-708.#}
+{#            </li>#}
+{#            <li>Regulamin ma zastosowanie do wykonywania usług świadczonych bez jednoczesnej#}
+{#                obecności stron (na odległość), poprzez przekaz danych na indywidualne żądanie#}
+{#                usługobiorcy, przesyłanej i otrzymywanej za pomocą urządzeń do elektronicznego#}
+{#                przetwarzania, włącznie z kompresją cyfrową, i przechowywania danych, która jest w#}
+{#                całości nadawana, odbierana lub transmitowana za pomocą sieci telekomunikacyjnej#}
+{#                w rozumieniu ustawy z dnia 16 lipca 2004 r. - Prawo telekomunikacyjne.#}
+{#            </li>#}
+{#            <li>Usługi świadczone przez Usługodawcę polegają na udostępnianiu usługobiorcom#}
+{#                funkcjonalności Serwisu, w szczególności możliwości przeglądania zamieszczanych#}
+{#                w Serwisie treści, publikowania treści, komentowania treści, udostępniania treści.#}
+{#            </li>#}
+{#        </ol>#}
+
+{#        <h3 class="page__chapter">II. Korzystanie z Serwisu</h3>#}
+{#        <ol class="page__numeric">#}
+{#            <li>Wymagania techniczne, jakie musi spełnić usługobiorca, aby usługi mogły być#}
+{#                świadczone na jego rzecz, to posiadanie urządzenia z dostępem do sieci Internet (np.#}
+{#                laptop), zdolnego do obsługi przeglądarki internetowej (np. Internet Explorer)#}
+{#                umożliwiającej wyświetlanie zdjęć, filmów, animacji; posiadanie adresu i konta#}
+{#                poczty elektronicznej (e-mail).#}
+{#            </li>#}
+{#            <li>Korzystanie z Serwisu nie wymaga rejestracji, przy czym udostępniane#}
+{#                funkcjonalności mogą być ograniczone. Korzystanie z pełnej funkcjonalności Serwisu#}
+{#                wymaga rejestracji w Serwisie oraz zalogowania do konta użytkownika.#}
+{#            </li>#}
+{#            <li>W przypadku rejestracji w Serwisie usługobiorca jest zobowiązany do podania danych#}
+{#                wymaganych przez Usługodawcę. Dane powinny być zgodne z prawdą, a także#}
+{#                aktualizowane w przypadku ich zmiany. Rejestracja w Serwisie wymaga zapoznania#}
+{#                się z przedmiotowym regulaminem oraz jego akceptacji.#}
+{#            </li>#}
+{#            <li>Konto użytkownika służy usługobiorcy do korzystania z funkcjonalności Serwisu#}
+{#                przewidzianych dla zarejestrowanych użytkowników oraz kontaktu z Serwisem.#}
+{#            </li>#}
+{#            <li>Umowa o świadczenie usług drogą elektroniczną zostaje zawarta poprzez rozpoczęcie#}
+{#                korzystania przez usługobiorcę z funkcjonalności udostępnianych przez Usługodawcę#}
+{#                w przypadku osób nie korzystających z rejestracji lub używających Serwisu bez#}
+{#                zalogowania się do swojego konta. Usługobiorca wyraża zgodę na warunki#}
+{#                wynikające z regulaminu, poprzez sam fakt korzystania z Serwisu. Umowa o#}
+{#                świadczenie usług drogą elektroniczną zostaje rozwiązana z chwilą opuszczenia#}
+{#                Serwisu.#}
+{#            </li>#}
+{#            <li>W przypadku usługobiorców dokonujących rejestracji w Serwisie, umowa o#}
+{#                świadczenie usług drogą elektroniczną zostaje zawarta z chwilą potwierdzenia przez#}
+{#                Usługodawcę rejestracji usługobiorcy w Serwisie. Umowa o świadczenie usług drogą#}
+{#                elektroniczną może zostać wypowiedziana przez usługobiorcę w każdym czasie#}
+{#                poprzez zgłoszenie usunięcia własnego konta w Serwisie. Zgłoszenie może zostać#}
+{#                dokonane poprzez funkcję dostępną na koncie użytkownika. Umowa zostaje#}
+{#                rozwiązana z chwilą potwierdzenia usunięcia konta w Serwisie przez Usługodawcę, co#}
+{#                powinno mieć miejsce w terminie 14 dni od dnia zgłoszenia przez usługobiorcę chęci#}
+{#                usunięcia konta. Usługodawca może wypowiedzieć umowę w każdym czasie.#}
+{#                Wypowiedzenie umowy przez Usługodawcę może wiązać się z usunięciem konta#}
+{#                usługobiorcy w Serwisie lub zablokowaniem, czy ograniczeniem jego#}
+{#                funkcjonalności.#}
+{#            </li>#}
+{#            <li>W przypadku usunięcia konta usługobiorcy, opublikowane przez niego treści#}
+{#                pozostają w Serwisie oznaczone jako „konto usunięte” lub „konto anonimowe”.#}
+{#            </li>#}
+{#            <li>Usługobiorcę obowiązuje zakaz dostarczania treści o charakterze bezprawnym,#}
+{#                sprzecznym z zasadami współżycia społecznego lub dobrymi obyczajami.#}
+{#            </li>#}
+{#            <li>W przypadku dostarczania treści o charakterze bezprawnym, sprzecznym z zasadami#}
+{#                współżycia społecznego lub dobrymi obyczajami, Usługodawca może zablokować#}
+{#                usługobiorcy dostęp do Serwisu, włącznie z usunięciem konta w Serwisie, jeżeli#}
+{#                dokonano rejestracji.#}
+{#            </li>#}
+{#            <li>Zabronione są jakiekolwiek próby ingerowania w funkcjonalność Serwisu. W#}
+{#                przypadku takiej próby, Usługodawca może zablokować usługobiorcy dostęp do#}
+{#                Serwisu, włącznie z usunięciem konta w Serwisie, jeżeli dokonano rejestracji.#}
+{#            </li>#}
+{#            <li>Korzystanie z Serwisu jest bezpłatne, chyba że wyraźnie wskazano o odpłatności za#}
+{#                konkretną usługę lub funkcjonalność.#}
+{#            </li>#}
+{#        </ol>#}
+{#        <h3 class="page__chapter">III. Publikowanie i przechowywanie treści</h3>#}
+{#        <ol class="page__numeric">#}
+{#            <li>Usługobiorcy mogą publikować treści w Serwisie, jeżeli dokonali rejestracji.#}
+{#                Publikowane treści powiązane są z kontem usługobiorcy.#}
+{#            </li>#}
+{#            <li>#}
+{#                Publikowanie treści jest możliwe również dla usługobiorców niezarejestrowanych.#}
+{#                Wówczas treści pojawiają się w Poczekalni i wymagają opublikowania przez#}
+{#                Usługodawcę.#}
+{#            </li>#}
+{#            <li>Publikowane treści mogą polegać na zamieszczaniu w Serwisie grafik, animacji,#}
+{#                filmów, linków do stron internetowych, postów (treści pisanych) oraz komentarzy,#}
+{#                opinii.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługobiorca oświadcza, że posiada wszelkie prawa do publikowanych treści, w#}
+{#                szczególności prawa autorskie, a także, że są wolne od wad prawnych i nie naruszają#}
+{#                żadnych praw, w tym praw osób trzecich.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługodawca nie autoryzuje, nie cenzoruje, nie ingeruje w udostępniane przez#}
+{#                usługobiorców treści, ani ich nie zatwierdza. Rolą Usługodawcy jest jedynie#}
+{#                umożliwienie publikowania treści w Serwisie. Za zgodność publikowanych treści z#}
+{#                prawem, zasadami współżycia społecznego lub dobrymi obyczajami odpowiada#}
+{#                indywidualnie usługobiorca.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługobiorca jest zobowiązany do oznaczania publikowanych treści, które mogą być#}
+{#                nieodpowiednie dla osób niepełnoletnich informacją, iż treści są dostępne dla osób#}
+{#                pełnoletnich. Takie oznaczenie powoduje uniemożliwienie zobaczenia treści bez#}
+{#                żądania ich udostępnienia.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługobiorca może ponosić odpowiedzialność również w przypadku, gdy treści#}
+{#                zostały opublikowane z jego konta przez osoby trzecie, którym umożliwił lub ułatwił#}
+{#                korzystanie z konta w Serwisie, nawet bez jego wiedzy lub zgody.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługodawca w razie uzyskania wiarygodnej wiadomości o bezprawnym charakterze#}
+{#                przechowywanych treści dostarczonych przez usługobiorcę lub otrzymania#}
+{#                urzędowego zawiadomienia o bezprawnym charakterze przechowywanych treści,#}
+{#                uniemożliwi dostęp do tych treści.#}
+{#            </li>#}
+{#            <li>Usługobiorcy Serwisu mogą zgłaszać Usługodawcy treści, które naruszają#}
+{#                przedmiotowy regulamin, przepisy prawa, zasady współżycia społecznego lub dobre#}
+{#                obyczaje, lub też z innych przyczyn nie powinny być dostępne.#}
+{#            </li>#}
+{#            <li>#}
+{#                Usługodawca może usuwać treści publikowane przez usługobiorców bez#}
+{#                informowania i bez podawania przyczyny.#}
+{#            </li>#}
+{#            <li>#}
+{#                Z chwilą publikacji treści przez usługobiorcę w Serwisie, usługobiorca udziela#}
+{#                Usługodawcy nieodpłatnej, niewyłącznej, nieograniczonej terytorialnie licencji na#}
+{#                korzystanie z tych treści, o ile stanowią one utwór w rozumieniu ustawy z dnia 4#}
+{#                lutego 1994 r. o prawie autorskim i prawach pokrewnych i usługobiorcy przysługują#}
+{#                autorskie prawa majątkowe do tego utworu, na następujących polach eksploatacji:#}
+{#                <ul class="page__alphabetic page__alphabetic--child">#}
+{#                    <li>#}
+{#                        w zakresie utrwalania i zwielokrotniania utworu - wytwarzanie określoną#}
+{#                        techniką egzemplarzy utworu, w tym techniką drukarską, reprograficzną,#}
+{#                        zapisu magnetycznego oraz techniką cyfrową;#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        w zakresie obrotu oryginałem albo egzemplarzami, na których utwór#}
+{#                        utrwalono - wprowadzanie do obrotu, użyczenie lub najem oryginału albo#}
+{#                        egzemplarzy;#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        w zakresie rozpowszechniania utworu w sposób inny niż określony w lit. b -#}
+{#                        publiczne wykonanie, wystawienie, wyświetlenie, odtworzenie oraz nadawanie#}
+{#                        i reemitowanie, a także publiczne udostępnianie utworu w taki sposób, aby#}
+{#                        każdy mógł mieć do niego dostęp w miejscu i w czasie przez siebie wybranym.#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#        </ol>#}
+{#        <h3 class="page__chapter">IV. Reklamacje</h3>#}
+{#        <ol class="page__numeric">#}
+{#            <li>Usługobiorca może złożyć reklamację związaną z usługami świadczonymi drogą#}
+{#                elektroniczną przez Usługodawcę.#}
+{#            </li>#}
+{#            <li>Reklamacja zawierająca opis sprawy oraz zastrzeżenia i oczekiwania powinna zostać#}
+{#                przesłana drogą elektroniczną na adres e-mail: kontakt@ciekawe.online lub pisemnie na adres#}
+{#                Usługodawcy wskazany w ust. I.1 regulaminu.#}
+{#            </li>#}
+{#            <li>#}
+{#                Reklamacja zostanie rozpatrzona w terminie 14 dni od dnia jej doręczenia#}
+{#                Usługodawcy, a o jej wyniku usługobiorca zostanie poinformowany drogą, którą#}
+{#                została złożona reklamacja lub drogą wskazaną przez reklamującego.#}
+{#            </li>#}
+{#        </ol>#}
+{#        <h3 class="page__chapter">V. Postanowienia końcowe</h3>#}
+{#        <ol class="page__numeric">#}
+{#            <li>#}
+{#                Spory pomiędzy usługobiorcami niebędącymi konsumentami a Usługodawcą będą#}
+{#                rozpatrywane przez sądy właściwe miejscowo dla siedziby Usługodawcy.#}
+{#            </li>#}
+{#            <li>#}
+{#                W razie prowadzenia prac konserwacyjnych, lub w sytuacjach wymagających#}
+{#                ograniczenia dostępności do Serwisu, Usługodawca może wyłączyć niektóre#}
+{#                funkcjonalności Serwisu lub całkowicie wyłączyć Serwis.#}
+{#            </li>#}
+{#            <li>#}
+{#                Prawem właściwym dla relacji między usługobiorcami a Usługodawcą jest prawo#}
+{#                polskie.#}
+{#            </li>#}
+{#            <li>#}
+{#                Jeżeli nieważnością jest dotknięta tylko część regulaminu, pozostałe postanowienia#}
+{#                pozostają w mocy.#}
+{#            </li>#}
+{#        </ol>#}
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    {{ encore_entry_script_tags('post-list') }}#}
+{% endblock %}

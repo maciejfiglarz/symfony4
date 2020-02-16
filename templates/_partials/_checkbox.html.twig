@@ -1,0 +1,6 @@
+<div class="checkbox-primary {{ jsSelectFront == 'true' ? 'jsSelectFront' : '' }}">
+    <label class="checkbox-primary__container">{{ text }}
+        <input value="{{ value is defined ? value: '' }}" type="checkbox" name="{{ name }}" {{ checked is defined and checked ? 'checked' : '' }}>
+        <span class="checkbox-primary__checkmark"></span>
+    </label>
+</div>

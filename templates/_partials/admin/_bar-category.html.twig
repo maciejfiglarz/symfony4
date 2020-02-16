@@ -1,0 +1,12 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+<div class="admin-content__bar">
+    Usunięte   {% if category.isDeleted  %}
+            <i class="fas fa-check"></i>
+            <a href="{{ path('admin_category-action',{'category':category.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}tak{% endtrans %}</a>
+        {% else %}
+            <i class="fas fa-ban"></i>
+            <a href="{{ path('admin_category-action',{'category':category.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}nie{% endtrans %}</a>
+        {% endif %}
+</div>

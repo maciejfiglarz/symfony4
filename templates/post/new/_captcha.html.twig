@@ -1,0 +1,34 @@
+<div class="field-wrap field-wrap--no-padding">
+    <div class="field-label">
+        <div class="field-label__title">
+
+        </div>
+    </div>
+
+    <div class="field-wrap__content">
+
+        <div class="create__captcha create__captcha-label field-label__title">
+            <div class="create__captcha-center">Zaznacz liczbę z obrazka:
+				<img
+                        src="{{ asset(captchaHelper.createCaptchaImage) }}"> </div>
+            <div class="create__captcha-center"> <span class="create__captcha-counter">50</span> &nbsp;&nbsp;</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="field-wrap field-wrap--no-padding">
+    <div class="field-label">
+        <div class="field-label__title">
+            {#			<div class="create__captcha-counter">50</div>#}
+        </div>
+    </div>
+    <div class="field-wrap__content">
+
+        <div class="create__captcha">
+
+            <input type="range" min="1" max="100" value="50" class="create__captcha-slider">
+
+        </div>
+    </div>
+</div>

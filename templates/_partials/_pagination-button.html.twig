@@ -1,0 +1,13 @@
+
+
+
+{% set nextPage =  paginate.page + 1 %}
+{% set isNotLastPage = paginate.page != paginate.pages ? true : false %}
+
+{% if isNotLastPage %}
+    {% set params = {'page':paginate.page+1} %}
+    {% set href = path( app.request.attributes.get('_route'), params ) %}
+    <a href="{{ href }}" class="pagination__button">
+        Następna strona
+    </a>
+{% endif %}

@@ -1,0 +1,89 @@
+.authorization {
+  display: flex;
+  margin-top: -10px;
+  justify-content: center;
+
+  .field-error__frame {
+    margin-bottom: 4px;
+  }
+
+  &-title {
+    font-size: 3.2rem;
+    color: white;
+    text-align:center;
+    @include fontHeader();
+    margin-bottom: 10px;
+  }
+
+
+  &-preview {
+
+    //background: url('./images/register_cover.png')  no-repeat center center;   -webkit-background-size: cover;
+    //-moz-background-size: cover;
+    //-o-background-size: cover;
+    //background-size: cover;
+    background: var(--color-background-dark);
+  }
+
+  &-form {
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+
+    @include mobile(){
+      width:100%;
+    }
+    &__warning {
+      background: var(--color-warning);
+      font-size: 1.3rem;
+      border-radius: $border-radius-small;
+      padding:8px;
+      margin-bottom: 7px;
+      i{
+        margin-right: 4px;
+      }
+    }
+    &__alert {
+      background: var(--color-error);
+      text-align: center;
+      padding:5px;
+      margin-bottom: 4px;
+      margin-top: 7px;
+      border-radius: 3px;
+    }
+    &__inner {
+      width: 78%;
+      margin: 0 auto;
+      @include mobile(){
+        width:100%;
+      }
+    }
+    &__confirm {
+      margin-top: 10px;
+      label {
+        @include mobile(){
+          font-size: 1.3rem;
+        }
+      }
+
+
+    }
+    &__button {
+
+      &-wrap {
+        margin-top: 20px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      &-link {
+        font-size:1.4rem;
+        cursor:pointer;
+      }
+
+    }
+
+
+  }
+
+}

@@ -1,0 +1,35 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+    <div class="container__post">
+        {% for post in paginate.data %}
+            {% include '_partials/admin/_bar-post.html.twig' with { 'post': post} %}
+
+            <form action="" class="admin-tags" method="POST">
+                <input type="hidden" name="postID" value="{{ post.id }}"/>
+                <input type="hidden" name="type" value="meta-tags"/>
+                <input type="text" placeholder="Meta Title" name="metaTitle" class="regular-text regular-text--middle regular-text--middle regular-text--small-font"
+                       value="{{ post.metaTitle }}"/>
+                <input type="text" placeholder="Meta Description" name="metaDescription" class="regular-text regular-text--middle regular-text--middle regular-text--small-font"
+                       value="{{ post.metaDescription }}"/>
+                <input type="submit" class="button-primary button-primary--small" value="Zmień"/>
+            </form>
+            <br>
+
+            <form action="" class="admin-tags" method="POST">
+                <input type="hidden" name="postID" value="{{ post.id }}"/>
+                <input type="hidden" name="type" value="meta-tags-facebook"/>
+                <input type="text" placeholder="Meta Title Facebook" name="metaTitleFacebook" class="regular-text regular-text--middle regular-text--middle regular-text--small-font"
+                       value="{{ post.metaTitleFacebook }}"/>
+                <input type="text" placeholder="Meta Description Facebook" name="metaDescriptionFacebook" class="regular-text regular-text--middle regular-text--middle regular-text--small-font"
+                       value="{{ post.metaDescriptionFacebook }}"/>
+                <input type="submit" class="button-primary button-primary--small" value="Zmień"/>
+            </form>
+            <a class="button-primary" href="{{path('admin_single',{'id':post.id,'slug':post.slug})}}">Edytuj</a>
+
+            {% include '_partials/post/_single-list.html.twig' with { 'post': post} %}
+        {% endfor %}
+
+        {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+    </div>
+{% endblock %}

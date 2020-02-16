@@ -1,0 +1,45 @@
+{% if type =='comment' and comment %}
+    {% set id = comment.id %}
+    {% set type = 'comment' %}
+{% elseif(type =='post' and post) %}
+    {% set id = post.id %}
+    {% set type = 'post' %}
+{% endif %}
+
+<div data-id="{{ id }}" data-type="{{ type }}" id="report-{{ type }}-{{ id }}" class="report display-none">
+    <div class="report__close">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="report__content">
+        <h2 class="report__title">
+            Zgłoś naruszenie
+        </h2>
+
+        {% if comment is defined and comment is not null %}
+            {% include '_partials/popup/report/_comment.html.twig' with { 'comment': comment } %}
+        {% endif %}
+
+        {% if post is defined and post is not null %}
+            {% include '_partials/popup/report/_post.html.twig' with { 'post': post } %}
+
+        {% endif %}
+
+
+        {% include '_partials/_checkbox.html.twig' with {'text': 'naruszenie regulaminu - nieodpowiednie treści', 'name': 'report-comment-'~id, 'value':'isStatuteBreak','jsSelectFront':false} %}
+
+        {% include '_partials/_checkbox.html.twig' with {'text': 'treści reklamowe i spam','name': 'report-comment-'~id, 'value':'isSpam','jsSelectFront':false} %}
+
+        {% include '_partials/_checkbox.html.twig' with {'text': 'treści zbyt drastyczne lub pornograficzne','name': 'report-comment-'~id,'value':'isDrasticOrPorn','jsSelectFront':false} %}
+
+        {% include '_partials/_checkbox.html.twig' with {'text': 'obrażanie lub atak na mnie lub inne osoby','name': 'report-comment-'~id,'value':'isInsult','jsSelectFront':false} %}
+
+        {% include '_partials/_checkbox.html.twig' with {'text': 'inne','name': 'report-comment-'~id,'value':'isOther','jsSelectFront':false} %}
+
+        <textarea name='other' placeholder="Z jakiego powodu zgłaszasz ten post?"
+                  oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                  class="report__textarea display-none"></textarea>
+        <div>
+            <input type="submit" class="button-secondary report__button display-none" value="Zgłoś"/>
+        </div>
+    </div>
+</div>

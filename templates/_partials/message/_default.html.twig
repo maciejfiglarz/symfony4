@@ -1,0 +1,8 @@
+<div class="message">
+    {%  if title is defined %}
+    <h1 class="message__title">{{ title }}</h1>
+    {% endif %}
+    <div class="message__tex">
+        {{ msg|raw }}
+    </div>
+</div>

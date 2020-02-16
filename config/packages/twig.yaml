@@ -1,0 +1,18 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        # the value is the service's id
+        searcherHelper: '@App\Helper\SearcherHelper'
+        userHelper: '@App\Helper\UserHelper'
+        pathHelper: '@App\Helper\PathHelper'
+        dateHelper: '@App\Helper\DateHelper'
+        notificationHelper: '@App\Helper\NotificationHelper'
+        captchaHelper: '@App\Helper\CaptchaHelper'
+        metaTagsHelper: '@App\Helper\MetaTagsHelper'
+        routeHelper: '@App\Helper\RouteHelper'
+        commentHelper: '@App\Helper\CommentHelper'
+        postHelper: '@App\Helper\PostHelper'
+        advertisementHelper: '@App\Helper\AdvertisementHelper'
+        settingHelper: '@App\Helper\SettingHelper'

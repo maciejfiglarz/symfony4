@@ -1,0 +1,8 @@
+<div class="header-profile__dropdown">
+	<a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'dodane'}) }}" class="header-profile__dropdown-item">
+		<i class="fas fa-user"></i>Profil</a>
+	<a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'ustawienia'})}}" class="header-profile__dropdown-item">
+		<i class="fas fa-cog"></i>Ustawienia</a>
+	<a href="{{ path('logout') }}" class="header-profile__dropdown-item">
+		<i class="fas fa-sign-out-alt"></i>Wyloguj</a>
+</div>

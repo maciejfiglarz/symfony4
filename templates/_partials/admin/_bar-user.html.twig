@@ -1,0 +1,23 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+<div class="admin-content__bar">
+     Delete by user:   {% if user.isDeleted  %}
+            <i class="fas fa-check"></i>
+            <a href="{{ path('admin_user-action',{'user':user.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}yes{% endtrans %}</a>
+        {% else %}
+            <i class="fas fa-ban"></i>
+            <a href="{{ path('admin_user-action',{'user':user.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}no{% endtrans %}</a>
+        {% endif %}
+
+    Is ban:   {% if user.isBan  %}
+        <i class="fas fa-check"></i>
+        <a href="{{ path('admin_user-action',{'user':user.id,'action': 'isBan','redirect':currentPath}) }}">
+            {% trans %}yes{% endtrans %}</a>
+    {% else %}
+        <i class="fas fa-ban"></i>
+        <a href="{{ path('admin_user-action',{'user':user.id,'action': 'isBan','redirect':currentPath}) }}">
+            {% trans %}no{% endtrans %}</a>
+    {% endif %}
+
+</div>

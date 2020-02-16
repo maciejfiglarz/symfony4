@@ -1,0 +1,26 @@
+<div class="header-notification__dropdown">
+	{% if notificationHelper.fetchAllActionNotificationForLoggedUser(10)|length > 0 %}
+		<div class="header-notification__dropdown-inner">
+			{% for notification in notificationHelper.fetchAllActionNotificationForLoggedUser(10) %}
+				{% if notification.isComment %}
+					<a href="{{ path('post_single',{'id': notification.post.id, 'slug' : notification.post.slug, 'notification': notification.id}) }}" class="header-notification__dropdown-item {{ notification.isActive == true ? 'header-notification__dropdown-item--active' :'' }}">
+						<div class="header-notification__avatar" style="background:url({{ asset(notification.userMark.getAvatarUrl) }});background-size: cover;"></div>
+						{{ notification.userMark.username }}
+						oznaczył Cię w komentarzu</a>
+				{% elseif (notification.isAddedFirst) %}
+					<a href="{{ path('page_good-practise', {'notification': notification.id }) }}" class="header-notification__dropdown-item {{ notification.isActive == true ? 'header-notification__dropdown-item--active' :'' }}">
+					Chcesz, aby Twój post był lepiej widoczny?</a>
+
+				{% endif %}
+			{% endfor %}
+			{% if notificationHelper.fetchAllActionNotificationForLoggedUser(10)|length > 10 %}
+				<a class="header-notification__dropdown-more" href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'powiadomienia'}) }}">
+					Zobacz więcej
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+	{% if notificationHelper.fetchAllActionNotificationForLoggedUser(10)|length == 0 %}
+		<div class="header-notification__dropdown-empty">Nie posiadasz żadnych powiadomień</div>
+	{% endif %}
+</div>

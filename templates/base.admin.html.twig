@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+        {% block title %}Admin
+        {% endblock %}
+    </title>
+    {% block stylesheets %}
+
+        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ routeHelper.getDomainUrl }}/custom.css">
+        {{ encore_entry_link_tags('app') }}
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:800&display=swap" rel="stylesheet">
+
+
+    {% endblock %}
+</head>
+<body>
+<div class="cover display-none"></div>
+
+{% if userHelper.getUser is null %}
+    {% include '_partials/_cookies.html.twig' %}
+{% endif %}
+{% include '_partials/popup/_forgot-password.html.twig' %}
+{% if userHelper.isFacebookConfirmUsername %}
+    {% include '_partials/popup/_change-username.html.twig' %}
+{% endif %}
+<input type="hidden" name="isLogged" value="{{ userHelper.isLogged ? '1' : '0' }}"/>
+<div class="admin-header">
+    <div class="admin-header__menu container">
+        <div>
+
+            <a class="admin-header__link" href="{{ path('admin_post') }}">Posty</a>
+            <a class="admin-header__link" href="{{ path('admin_comment') }}">Komentarze</a>
+            <a class="admin-header__link" href="{{ path('admin_category') }}">Kategorie</a>
+            <a class="admin-header__link" href="{{ path('admin_user') }}">Użytkownicy</a>
+            <a class="admin-header__link" href="{{ path('admin_statistic') }}">Statystyki</a>
+            {% if (is_granted('ROLE_ADMIN')) %}
+            <a class="admin-header__link" href="{{ path('admin_advertisement') }}">Reklamy</a>
+            <a class="admin-header__link" href="{{ path('admin_editor') }}">Redaktorzy</a>
+            <a class="admin-header__link" href="{{ path('admin_setting') }}">Ustawienia</a>
+            {% endif %}
+        </div>
+        <div>
+            <a class="admin-header__link" href="{{ path('logout') }}">Wyloguj</a>
+        </div>
+    </div>
+
+</div>
+<div class="padding-content"></div>
+{% block body %}{% endblock %}
+{% block javascripts %}
+ 
+{% endblock %}
+     <link rel="stylesheet" href="{{ routeHelper.getDomainUrl }}/ckeditor.css">
+</body>
+</html>

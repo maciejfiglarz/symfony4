@@ -1,0 +1,86 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% if subpage =='dodane' or subpage == 'polubione' %}
+        {% include '_partials/post/_report-post.html.twig' with {  'data': paginate.data } %}
+    {% endif %}
+
+    <div class="container__post single__container container__list">
+        <div class="profile-header">
+            <div class="profile-header__avatar"
+                 style="background:url({{ asset(user.getAvatarUrl) }});background-size: cover;"></div>
+            <div class="profile-header__info">
+                <div class="profile-header__info-name">{{ user.username }}</div>
+                <div class="profile-header__info-label">{{ dateHelper.displayDaysNumberSinceToday(user.createdAt|date('Y-m-d')) }}</div>
+            </div>
+
+        </div>
+        <div class="profile-menu">
+            <a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'dodane'}) }}"
+               class="profile-menu__item {{ subpage=='dodane' ? 'profile-menu__item--active': '' }}">Dodane</a>
+            {% if isOwner %}
+                <a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'polubione'}) }}"
+                   class="profile-menu__item {{ subpage=='polubione' ? 'profile-menu__item--active': '' }}">Polubione</a>
+
+                <a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'powiadomienia'}) }}"
+                   class="profile-menu__item {{ subpage=='powiadomienia' ? 'profile-menu__item--active': '' }}">Powiadomienia</a>
+
+                <a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'ustawienia'}) }}"
+                   class="profile-menu__item {{ subpage=='ustawienia' ? 'profile-menu__item--active': '' }}">Ustawienia</a>
+            {% endif %}
+        </div>
+
+        <div class="profile__content">
+
+            {% if subpage =='dodane' or subpage == 'polubione' %}
+
+
+                {% if subpage == 'dodane' and paginate.data|length == 0 %}
+                    <div class="profile__content-info">Nie dodano żadnych postów</div>
+                {% endif %}
+                {% if subpage == 'polubione' and paginate.data|length == 0 %}
+                    <div class="profile__content-info">Nie polubiłeś żadnych postów</div>
+                {% endif %}
+
+                {% for post in paginate.data %}
+                    {% include '_partials/post/_single-list.html.twig' with { 'post': post} %}
+                {% endfor %}
+
+                {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+
+
+            {% elseif  subpage == 'powiadomienia' %}
+                <br>
+                {% for notification in paginate.data %}
+                    <a href="{{ path('post_single',{'id': notification.post.id, 'slug' : notification.post.slug, 'notification': notification.id}) }}"
+                       class="profile__notification-item {{ notification.isActive == true ? 'header-notification__dropdown-item--active' :'' }}">
+
+                        <div class="profile__notification-avatar"
+                             style="background:url({{ asset(notification.userMark.getAvatarUrl) }});background-size: cover;"></div>
+
+                        <div>
+
+                        {{ notification.userMark.username }} oznaczył Cię w komentarzu w poście
+                        {{ notification.comment.post.title|length > 70 ? notification.comment.post.title|slice(0,70)~'...' : notification.comment.post.title }}
+                        </div>
+                    </a>
+                {% endfor %}
+                {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+            {% elseif  subpage == 'ustawienia' %}
+                {% include 'user/_setting.html.twig' with {'user': user} %}
+            {% elseif  subpage == 'profil' %}
+                {% include 'user/_profil.html.twig' with {'user': user} %}
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('post-list') }}
+    {% endblock %}

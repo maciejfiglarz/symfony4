@@ -1,0 +1,56 @@
+{% extends 'base.site.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="authorization">
+            {#            <div class="authorization-preview">#}
+
+            {#                #}
+            {#            </div>#}
+            <div class="authorization-form">
+                <div class="authorization-form__inner">
+                    <h1 class="authorization-title">Zaloguj się</h1>
+                    {% include '_partials/_facebook-login.html.twig' with {'text': 'Polącz się przez Facebooka'} %}
+                    <form method="post">
+                        {% if error %}
+                            <div class="authorization-form__alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                               class="regular-text regular-text--authorization" placeholder="Email" autocomplete="off"
+                               required>
+                        <input type="password" name="password" id="inputPassword"
+                               class="regular-text regular-text--authorization" placeholder="Password"
+                               autocomplete="off" required>
+                        <div class="authorization-form__confirm">
+                            {% include '_partials/_checkbox.html.twig' with {'text': 'Zapamiętaj mnie','name':'_remember_me','jsSelectFront':'true'} %}
+                        </div>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+
+
+                        <div class="authorization-form__button-wrap">
+                            <input class="authorization-form__button button-secondary" type="submit"
+                                   value="Zaloguj się"/>
+                            <div class="">
+                                <a class="authorization-form__button-link forgot-password__init">Zapomniałeś hasła?</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('authorization') }}
+{% endblock %}

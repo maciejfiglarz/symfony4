@@ -1,0 +1,9 @@
+{% for comment in comments %}
+    {% include '_partials/popup/report/_report.html.twig' with { 'type': 'comment','post': null, 'comment': comment } %}
+{% endfor %}
+
+{% for key,comments in repliedComments %}
+    {% for comment in comments %}
+        {% include '_partials/popup/report/_report.html.twig' with { 'type': 'comment','post': null, 'comment': comment } %}
+    {% endfor %}
+{% endfor %}

@@ -1,0 +1,22 @@
+.footer {
+  background: var(--color-background-dark);
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  z-index: 1;
+  min-height: 70px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  &__link {
+    padding:10px;
+    font-size: 1.3rem;
+  }
+  &__social {
+    width:385px;
+    margin: 0 auto 20px auto;
+  }
+
+}

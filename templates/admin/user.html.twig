@@ -1,0 +1,16 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+    <div class="container__post">
+        {% for user in paginate.data %}
+            {% include '_partials/admin/_bar-user.html.twig' with { 'user': user} %}
+            <div class="admin-content__user">
+                <div class="admin-content__user-author">#{{ user.id }} {{ user.username }} {{ user.email }}</div>
+
+            </div>
+        {% endfor %}
+
+        {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+    </div>
+{% endblock %}

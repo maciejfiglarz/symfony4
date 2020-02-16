@@ -1,0 +1,19 @@
+.options {
+
+  position:absolute;
+  background: var(--color-background-light);
+  top:50%;
+  transform: translateY(-50%) translateX(-100%);
+border-radius: $border-radius-small;
+  width:100px;
+  height:auto;
+  text-align:left;
+display:none;
+  &__item {
+    padding: 10px;
+  }
+  &--single-bar {
+left:50px;
+    left:-90px;
+  }
+}

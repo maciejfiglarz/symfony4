@@ -1,0 +1,43 @@
+<div class="popup popup-register">
+    <div class="popup-close">
+        <i class="fas fa-times"></i>
+    </div>
+    <h1 class="form-title">Założ konto</h1>
+    <form action="{{ path('register') }}" method="POST">
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Email
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="register-email" type="text"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Nazwa użytkownika
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="register-username" type="text"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Hasło
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="register-password" type="password"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Powtórz hasło
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="register-password_repeat" type="password"/>
+        </div>
+
+        <input class="button-primary" name="create-post" type="submit" value="Założ konto">
+    </form>
+
+</div>

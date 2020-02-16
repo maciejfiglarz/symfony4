@@ -1,0 +1,23 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% include '_partials/ads/_wall-vertical-left.html.twig' %}
+
+    <div class="reports-container">
+        {% include '_partials/popup/report/_report.html.twig' with { 'type': 'post','comment': null, 'post': post } %}
+        {% include '_partials/post/_report-comment.html.twig' with {  'comments': comments, 'repliedComments': repliedComments  } %}
+
+    </div>
+
+    <div class="container__post single__container container__list">
+        {% include '_partials/post/_single.html.twig' with { 'post': post} %}
+    </div>
+{% endblock %}
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('post-single') }}
+    {% endblock %}

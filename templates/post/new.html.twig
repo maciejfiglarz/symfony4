@@ -1,0 +1,91 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+	<form method="POST" name="create_post_form" method="post">
+		<div class="container create">
+			{% if is_granted('ROLE_USER') == false %}
+				<div class="create__frame">
+					Aktualnie jesteś niezalogowany. Materiał, który dodasz będzie widoczny na stronie dopiero po akceptacji
+																									                moderatora.
+					<br>Zaloguj się, aby moc dodać post natychmiast.
+				</div>
+			{% endif %}
+			<div class="create__column-wrap">
+
+				<div class="create__column">
+
+
+					{% include 'post/new/_select-data.html.twig' only %}
+					{# {% include 'post/_typePostSelect.html.twig' only %} #}
+
+					{#                    <div class="field-error__wrap">#}
+					{#                        <div class="field-wrap field-error--file display-none">#}
+					{#                            <div class="field-label"></div>#}
+					{#                            <div class="field-error__frame field-error__frame--file"></div>#}
+					{#                        </div>#}
+					{#                    </div>#}
+
+					{% include 'post/new/_error.html.twig' with {'type': 'file'} %}
+
+					{% include 'post/new/_imageFromDiscField.html.twig' only %}
+					{% include 'post/new/_imageFromLinkField.html.twig' only %}
+					{% include 'post/new/_linkFromYoutubeField.html.twig' only %}
+					{% include 'post/new/_linkFromYoutubeField.html.twig' only %}
+
+						<div class="field-wrap field-wrap--no-padding create__clipboard--mobile "> <div class="field-label"></div>
+						<div class="field-wrap__content field-wrap__content--center">
+							{% include 'post/new/_clipboard.html.twig' with {'type': 'mobile'} %}
+						</div>
+
+					</div>
+
+
+					{% include 'post/new/_error.html.twig' with {'type': 'title'} %}
+
+					{% include 'post/new/_titleField.html.twig' only %}
+
+					{% include 'post/new/_error.html.twig' with {'type': 'description'} %}
+					{% include 'post/new/_descriptionField.html.twig' only %}
+
+					{% include 'post/new/_categories.html.twig' with {'categories': categories} %}
+
+					{% include 'post/new/_sourceField.html.twig' only %}
+
+					{% include 'post/new/_error.html.twig' with {'type': 'captcha'} %}
+						{% include 'post/new/_captcha.html.twig' only %}
+
+					{% include 'post/new/_error.html.twig' with {'type': 'isConfirm'} %}
+
+					<div class="field-wrap">
+						<div class="field-label"></div>
+						<div>
+							{% include '_partials/_checkbox.html.twig' with {'text': 'Potwierdzam regulamin serwisu ' ~ settingHelper.getAppName|capitalize ~  settingHelper.getAppDomain,'name':'isConfirm','jsSelectFront':'true'} %}
+						</div>
+					</div>
+
+
+					<div class="field-wrap">
+						<div class="field-label"></div>
+						<div class="button--center">
+							<input class="button-secondary" name="create-post" type="submit" value="Dodaj">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="create__column create__column--content">
+					{% include 'post/new/_clipboard.html.twig' only %}
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('post-new') }}
+	{# {{ encore_entry_script_tags('ckeditor') }} #}
+{% endblock %}

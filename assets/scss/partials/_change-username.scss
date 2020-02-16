@@ -1,0 +1,81 @@
+.change-username {
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: var(--color-background-light);
+  z-index: 999999;
+  padding: 20px;
+  min-height: 240px;
+
+  &__warning {
+    background: var(--color-warning);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding:3px 8px;
+    color:white;
+    display: inline-block;
+    margin-bottom: 7px;
+    line-height: 20px;
+
+    i{
+      margin-right: 4px;
+    }
+  }
+
+  &__error {
+    background: var(--color-error);
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    border-radius: 3px;
+    display:inline-block;
+  }
+
+  &__success {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 1.6rem;
+    width:90%;
+    text-align:center;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 400;
+    width: 100%;
+    margin-bottom: 20px;
+    @include fontHeader();
+  }
+
+  &__input {
+    background: var(--color-background-dark);
+    border: 0;
+    border-radius: $border-radius-small;
+    width: 100%;
+    color: white;
+    padding: 15px;
+    margin: 0 0 20px 0;
+    font-size: 1.7rem;
+    font-weight: bold;
+    display: block;
+  }
+
+  &__button {
+    padding: 7px 12px;
+    font-size: 1.3rem;
+    display: inline-block;
+  }
+
+  &__success {
+    font-size: 14px;
+  }
+
+
+}

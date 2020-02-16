@@ -1,0 +1,8 @@
+
+<form class="searcher-static" action="{{ path('searcher_pre') }}" method="post">
+    <div class="searcher-static__info">Brak wyników wyszukiwania. Spróbuj użyć innego hasła!</div>
+    <input type="text" class="searcher-static__text" name="searcher__text" value="{{ key }}"/>
+    <div class="searcher-static__button-wrap">
+        <button type="submit" class="searcher-static__button"><i class="fas fa-search"></i></button>
+    </div>
+</form>

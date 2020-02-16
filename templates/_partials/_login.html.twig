@@ -1,0 +1,28 @@
+<div class="popup popup-login">
+    <div class="popup-close">
+        <i class="fas fa-times"></i>
+    </div>
+    <h1 class="form-title">Zaloguj się</h1>
+    {% include '_partials/_facebook-login.html.twig' with {'text': 'Zaloguj się przez Facebooka'} %}
+    <form action="{{ path('app_login')}}" method="POST">
+        <div class="form__wrap">
+            <div class="form__label">
+                Email
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="password-login" type="text"/>
+        </div>
+        <div class="form__wrap">
+            <div class="form__label">
+                Hasło
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="password-login" type="password"/>
+
+            <input checked id="remember_me" name="_remember_me" type="checkbox"/>
+            <label for="remember_me">Pamiętaj mnie</label>
+
+        </div>
+        <input class="button-primary button--full-width login-action" name="create-post" type="submit" value="Zaloguj">
+    </form>
+</div>

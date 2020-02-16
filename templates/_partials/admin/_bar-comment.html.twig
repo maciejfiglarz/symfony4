@@ -1,0 +1,23 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+<div class="admin-content__bar">
+     Delete by user:   {% if comment.isDeleted  %}
+            <i class="fas fa-check"></i>
+            <a href="{{ path('admin_comment-action',{'comment':comment.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}tak{% endtrans %}</a>
+        {% else %}
+            <i class="fas fa-ban"></i>
+            <a href="{{ path('admin_comment-action',{'comment':comment.id,'action': 'isDeleted','redirect':currentPath}) }}">
+                {% trans %}nie{% endtrans %}</a>
+        {% endif %}
+
+    Is ban:   {% if comment.isBan  %}
+        <i class="fas fa-check"></i>
+        <a href="{{ path('admin_comment-action',{'comment':comment.id,'action': 'isBan','redirect':currentPath}) }}">
+            {% trans %}tak{% endtrans %}</a>
+    {% else %}
+        <i class="fas fa-ban"></i>
+        <a href="{{ path('admin_comment-action',{'comment':comment.id,'action': 'isBan','redirect':currentPath}) }}">
+            {% trans %}nie{% endtrans %}</a>
+    {% endif %}
+
+</div>

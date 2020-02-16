@@ -1,0 +1,113 @@
+:root {
+    /* Overrides the border radius setting in the theme. */
+    --ck-border-radius: 4px;
+
+    /* Overrides the default font size in the theme. */
+    --ck-font-size-base: 14px;
+
+    /* Helper variables to avoid duplication in the colors. */
+    --ck-custom-background: hsl(270, 1%, 29%);
+    --ck-custom-foreground: hsl(255, 3%, 18%);
+    --ck-custom-border: hsl(300, 1%, 22%);
+    --ck-custom-white: hsl(0, 0%, 100%);
+
+    /* -- Overrides generic colors. ------------------------------------------------------------- */
+
+    --ck-color-base-foreground: var(--ck-custom-background);
+    --ck-color-focus-border: hsl(208, 90%, 62%);
+    --ck-color-text: hsl(0, 0%, 98%);
+    --ck-color-shadow-drop: hsla(0, 0%, 0%, 0.2);
+    --ck-color-shadow-inner: hsla(0, 0%, 0%, 0.1);
+
+    /* -- Overrides the default .ck-button class colors. ---------------------------------------- */
+
+    --ck-color-button-default-background: var(--ck-custom-background);
+    --ck-color-button-default-hover-background: hsl(270, 1%, 22%);
+    --ck-color-button-default-active-background: hsl(270, 2%, 20%);
+    --ck-color-button-default-active-shadow: hsl(270, 2%, 23%);
+    --ck-color-button-default-disabled-background: var(--ck-custom-background);
+
+    --ck-color-button-on-background: var(--ck-custom-foreground);
+    --ck-color-button-on-hover-background: hsl(255, 4%, 16%);
+    --ck-color-button-on-active-background: hsl(255, 4%, 14%);
+    --ck-color-button-on-active-shadow: hsl(240, 3%, 19%);
+    --ck-color-button-on-disabled-background: var(--ck-custom-foreground);
+
+    --ck-color-button-action-background: hsl(168, 76%, 42%);
+    --ck-color-button-action-hover-background: hsl(168, 76%, 38%);
+    --ck-color-button-action-active-background: hsl(168, 76%, 36%);
+    --ck-color-button-action-active-shadow: hsl(168, 75%, 34%);
+    --ck-color-button-action-disabled-background: hsl(168, 76%, 42%);
+    --ck-color-button-action-text: var(--ck-custom-white);
+
+    --ck-color-button-save: hsl(120, 100%, 46%);
+    --ck-color-button-cancel: hsl(15, 100%, 56%);
+
+    /* -- Overrides the default .ck-dropdown class colors. -------------------------------------- */
+
+    --ck-color-dropdown-panel-background: var(--ck-custom-background);
+    --ck-color-dropdown-panel-border: var(--ck-custom-foreground);
+
+    /* -- Overrides the default .ck-splitbutton class colors. ----------------------------------- */
+
+    --ck-color-split-button-hover-background: var(--ck-color-button-default-hover-background);
+    --ck-color-split-button-hover-border: var(--ck-custom-foreground);
+
+    /* -- Overrides the default .ck-input class colors. ----------------------------------------- */
+
+    --ck-color-input-background: var(--ck-custom-foreground);
+    --ck-color-input-border: hsl(257, 3%, 43%);
+    --ck-color-input-text: hsl(0, 0%, 98%);
+    --ck-color-input-disabled-background: hsl(255, 4%, 21%);
+    --ck-color-input-disabled-border: hsl(250, 3%, 38%);
+    --ck-color-input-disabled-text: hsl(0, 0%, 46%);
+
+    /* -- Overrides the default .ck-list class colors. ------------------------------------------ */
+
+    --ck-color-list-background: var(--ck-custom-background);
+    --ck-color-list-button-hover-background: var(--ck-color-base-foreground);
+    --ck-color-list-button-on-background: var(--ck-color-base-active);
+    --ck-color-list-button-on-background-focus: var(--ck-color-base-active-focus);
+    --ck-color-list-button-on-text: var(--ck-color-base-background);
+
+    /* -- Overrides the default .ck-balloon-panel class colors. --------------------------------- */
+
+    --ck-color-panel-background: var(--ck-custom-background);
+    --ck-color-panel-border: var(--ck-custom-border);
+
+    /* -- Overrides the default .ck-toolbar class colors. --------------------------------------- */
+
+    --ck-color-toolbar-background: var(--ck-custom-background);
+    --ck-color-toolbar-border: var(--ck-custom-border);
+
+    /* -- Overrides the default .ck-tooltip class colors. --------------------------------------- */
+
+    --ck-color-tooltip-background: hsl(252, 7%, 14%);
+    --ck-color-tooltip-text: hsl(0, 0%, 93%);
+
+    /* -- Overrides the default colors used by the ckeditor5-image package. --------------------- */
+
+    --ck-color-image-caption-background: hsl(0, 0%, 97%);
+    --ck-color-image-caption-text: hsl(0, 0%, 20%);
+
+    /* -- Overrides the default colors used by the ckeditor5-widget package. -------------------- */
+
+    --ck-color-widget-blurred-border: hsl(0, 0%, 87%);
+    --ck-color-widget-hover-border: hsl(43, 100%, 68%);
+    --ck-color-widget-editable-focus-background: var(--ck-custom-white);
+
+    /* -- Overrides the default colors used by the ckeditor5-link package. ---------------------- */
+
+    --ck-color-link-default: hsl(190, 100%, 75%);
+}
+
+body {
+    background: red !important;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px !important;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vY2tlZGl0b3IuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksc0RBQXNEO0lBQ3RELHVCQUF1Qjs7SUFFdkIsa0RBQWtEO0lBQ2xELHlCQUF5Qjs7SUFFekIseURBQXlEO0lBQ3pELHlDQUF5QztJQUN6Qyx5Q0FBeUM7SUFDekMscUNBQXFDO0lBQ3JDLG1DQUFtQzs7SUFFbkMsK0ZBQStGOztJQUUvRix1REFBdUQ7SUFDdkQsMkNBQTJDO0lBQzNDLGdDQUFnQztJQUNoQyw0Q0FBNEM7SUFDNUMsNkNBQTZDOztJQUU3QywrRkFBK0Y7O0lBRS9GLGlFQUFpRTtJQUNqRSw2REFBNkQ7SUFDN0QsOERBQThEO0lBQzlELDBEQUEwRDtJQUMxRCwwRUFBMEU7O0lBRTFFLDREQUE0RDtJQUM1RCx3REFBd0Q7SUFDeEQseURBQXlEO0lBQ3pELHFEQUFxRDtJQUNyRCxxRUFBcUU7O0lBRXJFLHVEQUF1RDtJQUN2RCw2REFBNkQ7SUFDN0QsOERBQThEO0lBQzlELDBEQUEwRDtJQUMxRCxnRUFBZ0U7SUFDaEUscURBQXFEOztJQUVyRCwyQ0FBMkM7SUFDM0MsNENBQTRDOztJQUU1QywrRkFBK0Y7O0lBRS9GLGlFQUFpRTtJQUNqRSw2REFBNkQ7O0lBRTdELCtGQUErRjs7SUFFL0YseUZBQXlGO0lBQ3pGLGlFQUFpRTs7SUFFakUsK0ZBQStGOztJQUUvRix3REFBd0Q7SUFDeEQsMENBQTBDO0lBQzFDLHNDQUFzQztJQUN0Qyx1REFBdUQ7SUFDdkQsbURBQW1EO0lBQ25ELCtDQUErQzs7SUFFL0MsK0ZBQStGOztJQUUvRix1REFBdUQ7SUFDdkQsd0VBQXdFO0lBQ3hFLGlFQUFpRTtJQUNqRSw2RUFBNkU7SUFDN0UsK0RBQStEOztJQUUvRCwrRkFBK0Y7O0lBRS9GLHdEQUF3RDtJQUN4RCxnREFBZ0Q7O0lBRWhELCtGQUErRjs7SUFFL0YsMERBQTBEO0lBQzFELGtEQUFrRDs7SUFFbEQsK0ZBQStGOztJQUUvRixnREFBZ0Q7SUFDaEQsd0NBQXdDOztJQUV4QywrRkFBK0Y7O0lBRS9GLG9EQUFvRDtJQUNwRCw4Q0FBOEM7O0lBRTlDLCtGQUErRjs7SUFFL0YsaURBQWlEO0lBQ2pELGtEQUFrRDtJQUNsRCxtRUFBbUU7O0lBRW5FLCtGQUErRjs7SUFFL0YsNENBQTRDO0FBQ2hEOztBQUVBO0lBQ0ksMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksNEJBQTRCO0FBQ2hDIiwiZmlsZSI6InBvc3QtbmV3LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpyb290IHtcbiAgICAvKiBPdmVycmlkZXMgdGhlIGJvcmRlciByYWRpdXMgc2V0dGluZyBpbiB0aGUgdGhlbWUuICovXG4gICAgLS1jay1ib3JkZXItcmFkaXVzOiA0cHg7XG5cbiAgICAvKiBPdmVycmlkZXMgdGhlIGRlZmF1bHQgZm9udCBzaXplIGluIHRoZSB0aGVtZS4gKi9cbiAgICAtLWNrLWZvbnQtc2l6ZS1iYXNlOiAxNHB4O1xuXG4gICAgLyogSGVscGVyIHZhcmlhYmxlcyB0byBhdm9pZCBkdXBsaWNhdGlvbiBpbiB0aGUgY29sb3JzLiAqL1xuICAgIC0tY2stY3VzdG9tLWJhY2tncm91bmQ6IGhzbCgyNzAsIDElLCAyOSUpO1xuICAgIC0tY2stY3VzdG9tLWZvcmVncm91bmQ6IGhzbCgyNTUsIDMlLCAxOCUpO1xuICAgIC0tY2stY3VzdG9tLWJvcmRlcjogaHNsKDMwMCwgMSUsIDIyJSk7XG4gICAgLS1jay1jdXN0b20td2hpdGU6IGhzbCgwLCAwJSwgMTAwJSk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgZ2VuZXJpYyBjb2xvcnMuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3ItYmFzZS1mb3JlZ3JvdW5kOiB2YXIoLS1jay1jdXN0b20tYmFja2dyb3VuZCk7XG4gICAgLS1jay1jb2xvci1mb2N1cy1ib3JkZXI6IGhzbCgyMDgsIDkwJSwgNjIlKTtcbiAgICAtLWNrLWNvbG9yLXRleHQ6IGhzbCgwLCAwJSwgOTglKTtcbiAgICAtLWNrLWNvbG9yLXNoYWRvdy1kcm9wOiBoc2xhKDAsIDAlLCAwJSwgMC4yKTtcbiAgICAtLWNrLWNvbG9yLXNoYWRvdy1pbm5lcjogaHNsYSgwLCAwJSwgMCUsIDAuMSk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgdGhlIGRlZmF1bHQgLmNrLWJ1dHRvbiBjbGFzcyBjb2xvcnMuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3ItYnV0dG9uLWRlZmF1bHQtYmFja2dyb3VuZDogdmFyKC0tY2stY3VzdG9tLWJhY2tncm91bmQpO1xuICAgIC0tY2stY29sb3ItYnV0dG9uLWRlZmF1bHQtaG92ZXItYmFja2dyb3VuZDogaHNsKDI3MCwgMSUsIDIyJSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tZGVmYXVsdC1hY3RpdmUtYmFja2dyb3VuZDogaHNsKDI3MCwgMiUsIDIwJSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tZGVmYXVsdC1hY3RpdmUtc2hhZG93OiBoc2woMjcwLCAyJSwgMjMlKTtcbiAgICAtLWNrLWNvbG9yLWJ1dHRvbi1kZWZhdWx0LWRpc2FibGVkLWJhY2tncm91bmQ6IHZhcigtLWNrLWN1c3RvbS1iYWNrZ3JvdW5kKTtcblxuICAgIC0tY2stY29sb3ItYnV0dG9uLW9uLWJhY2tncm91bmQ6IHZhcigtLWNrLWN1c3RvbS1mb3JlZ3JvdW5kKTtcbiAgICAtLWNrLWNvbG9yLWJ1dHRvbi1vbi1ob3Zlci1iYWNrZ3JvdW5kOiBoc2woMjU1LCA0JSwgMTYlKTtcbiAgICAtLWNrLWNvbG9yLWJ1dHRvbi1vbi1hY3RpdmUtYmFja2dyb3VuZDogaHNsKDI1NSwgNCUsIDE0JSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tb24tYWN0aXZlLXNoYWRvdzogaHNsKDI0MCwgMyUsIDE5JSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tb24tZGlzYWJsZWQtYmFja2dyb3VuZDogdmFyKC0tY2stY3VzdG9tLWZvcmVncm91bmQpO1xuXG4gICAgLS1jay1jb2xvci1idXR0b24tYWN0aW9uLWJhY2tncm91bmQ6IGhzbCgxNjgsIDc2JSwgNDIlKTtcbiAgICAtLWNrLWNvbG9yLWJ1dHRvbi1hY3Rpb24taG92ZXItYmFja2dyb3VuZDogaHNsKDE2OCwgNzYlLCAzOCUpO1xuICAgIC0tY2stY29sb3ItYnV0dG9uLWFjdGlvbi1hY3RpdmUtYmFja2dyb3VuZDogaHNsKDE2OCwgNzYlLCAzNiUpO1xuICAgIC0tY2stY29sb3ItYnV0dG9uLWFjdGlvbi1hY3RpdmUtc2hhZG93OiBoc2woMTY4LCA3NSUsIDM0JSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tYWN0aW9uLWRpc2FibGVkLWJhY2tncm91bmQ6IGhzbCgxNjgsIDc2JSwgNDIlKTtcbiAgICAtLWNrLWNvbG9yLWJ1dHRvbi1hY3Rpb24tdGV4dDogdmFyKC0tY2stY3VzdG9tLXdoaXRlKTtcblxuICAgIC0tY2stY29sb3ItYnV0dG9uLXNhdmU6IGhzbCgxMjAsIDEwMCUsIDQ2JSk7XG4gICAgLS1jay1jb2xvci1idXR0b24tY2FuY2VsOiBoc2woMTUsIDEwMCUsIDU2JSk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgdGhlIGRlZmF1bHQgLmNrLWRyb3Bkb3duIGNsYXNzIGNvbG9ycy4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3ItZHJvcGRvd24tcGFuZWwtYmFja2dyb3VuZDogdmFyKC0tY2stY3VzdG9tLWJhY2tncm91bmQpO1xuICAgIC0tY2stY29sb3ItZHJvcGRvd24tcGFuZWwtYm9yZGVyOiB2YXIoLS1jay1jdXN0b20tZm9yZWdyb3VuZCk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgdGhlIGRlZmF1bHQgLmNrLXNwbGl0YnV0dG9uIGNsYXNzIGNvbG9ycy4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3Itc3BsaXQtYnV0dG9uLWhvdmVyLWJhY2tncm91bmQ6IHZhcigtLWNrLWNvbG9yLWJ1dHRvbi1kZWZhdWx0LWhvdmVyLWJhY2tncm91bmQpO1xuICAgIC0tY2stY29sb3Itc3BsaXQtYnV0dG9uLWhvdmVyLWJvcmRlcjogdmFyKC0tY2stY3VzdG9tLWZvcmVncm91bmQpO1xuXG4gICAgLyogLS0gT3ZlcnJpZGVzIHRoZSBkZWZhdWx0IC5jay1pbnB1dCBjbGFzcyBjb2xvcnMuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG5cbiAgICAtLWNrLWNvbG9yLWlucHV0LWJhY2tncm91bmQ6IHZhcigtLWNrLWN1c3RvbS1mb3JlZ3JvdW5kKTtcbiAgICAtLWNrLWNvbG9yLWlucHV0LWJvcmRlcjogaHNsKDI1NywgMyUsIDQzJSk7XG4gICAgLS1jay1jb2xvci1pbnB1dC10ZXh0OiBoc2woMCwgMCUsIDk4JSk7XG4gICAgLS1jay1jb2xvci1pbnB1dC1kaXNhYmxlZC1iYWNrZ3JvdW5kOiBoc2woMjU1LCA0JSwgMjElKTtcbiAgICAtLWNrLWNvbG9yLWlucHV0LWRpc2FibGVkLWJvcmRlcjogaHNsKDI1MCwgMyUsIDM4JSk7XG4gICAgLS1jay1jb2xvci1pbnB1dC1kaXNhYmxlZC10ZXh0OiBoc2woMCwgMCUsIDQ2JSk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgdGhlIGRlZmF1bHQgLmNrLWxpc3QgY2xhc3MgY29sb3JzLiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3ItbGlzdC1iYWNrZ3JvdW5kOiB2YXIoLS1jay1jdXN0b20tYmFja2dyb3VuZCk7XG4gICAgLS1jay1jb2xvci1saXN0LWJ1dHRvbi1ob3Zlci1iYWNrZ3JvdW5kOiB2YXIoLS1jay1jb2xvci1iYXNlLWZvcmVncm91bmQpO1xuICAgIC0tY2stY29sb3ItbGlzdC1idXR0b24tb24tYmFja2dyb3VuZDogdmFyKC0tY2stY29sb3ItYmFzZS1hY3RpdmUpO1xuICAgIC0tY2stY29sb3ItbGlzdC1idXR0b24tb24tYmFja2dyb3VuZC1mb2N1czogdmFyKC0tY2stY29sb3ItYmFzZS1hY3RpdmUtZm9jdXMpO1xuICAgIC0tY2stY29sb3ItbGlzdC1idXR0b24tb24tdGV4dDogdmFyKC0tY2stY29sb3ItYmFzZS1iYWNrZ3JvdW5kKTtcblxuICAgIC8qIC0tIE92ZXJyaWRlcyB0aGUgZGVmYXVsdCAuY2stYmFsbG9vbi1wYW5lbCBjbGFzcyBjb2xvcnMuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAqL1xuXG4gICAgLS1jay1jb2xvci1wYW5lbC1iYWNrZ3JvdW5kOiB2YXIoLS1jay1jdXN0b20tYmFja2dyb3VuZCk7XG4gICAgLS1jay1jb2xvci1wYW5lbC1ib3JkZXI6IHZhcigtLWNrLWN1c3RvbS1ib3JkZXIpO1xuXG4gICAgLyogLS0gT3ZlcnJpZGVzIHRoZSBkZWZhdWx0IC5jay10b29sYmFyIGNsYXNzIGNvbG9ycy4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG5cbiAgICAtLWNrLWNvbG9yLXRvb2xiYXItYmFja2dyb3VuZDogdmFyKC0tY2stY3VzdG9tLWJhY2tncm91bmQpO1xuICAgIC0tY2stY29sb3ItdG9vbGJhci1ib3JkZXI6IHZhcigtLWNrLWN1c3RvbS1ib3JkZXIpO1xuXG4gICAgLyogLS0gT3ZlcnJpZGVzIHRoZSBkZWZhdWx0IC5jay10b29sdGlwIGNsYXNzIGNvbG9ycy4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG5cbiAgICAtLWNrLWNvbG9yLXRvb2x0aXAtYmFja2dyb3VuZDogaHNsKDI1MiwgNyUsIDE0JSk7XG4gICAgLS1jay1jb2xvci10b29sdGlwLXRleHQ6IGhzbCgwLCAwJSwgOTMlKTtcblxuICAgIC8qIC0tIE92ZXJyaWRlcyB0aGUgZGVmYXVsdCBjb2xvcnMgdXNlZCBieSB0aGUgY2tlZGl0b3I1LWltYWdlIHBhY2thZ2UuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLSAqL1xuXG4gICAgLS1jay1jb2xvci1pbWFnZS1jYXB0aW9uLWJhY2tncm91bmQ6IGhzbCgwLCAwJSwgOTclKTtcbiAgICAtLWNrLWNvbG9yLWltYWdlLWNhcHRpb24tdGV4dDogaHNsKDAsIDAlLCAyMCUpO1xuXG4gICAgLyogLS0gT3ZlcnJpZGVzIHRoZSBkZWZhdWx0IGNvbG9ycyB1c2VkIGJ5IHRoZSBja2VkaXRvcjUtd2lkZ2V0IHBhY2thZ2UuIC0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG5cbiAgICAtLWNrLWNvbG9yLXdpZGdldC1ibHVycmVkLWJvcmRlcjogaHNsKDAsIDAlLCA4NyUpO1xuICAgIC0tY2stY29sb3Itd2lkZ2V0LWhvdmVyLWJvcmRlcjogaHNsKDQzLCAxMDAlLCA2OCUpO1xuICAgIC0tY2stY29sb3Itd2lkZ2V0LWVkaXRhYmxlLWZvY3VzLWJhY2tncm91bmQ6IHZhcigtLWNrLWN1c3RvbS13aGl0ZSk7XG5cbiAgICAvKiAtLSBPdmVycmlkZXMgdGhlIGRlZmF1bHQgY29sb3JzIHVzZWQgYnkgdGhlIGNrZWRpdG9yNS1saW5rIHBhY2thZ2UuIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gKi9cblxuICAgIC0tY2stY29sb3ItbGluay1kZWZhdWx0OiBoc2woMTkwLCAxMDAlLCA3NSUpO1xufVxuXG5ib2R5IHtcbiAgICBiYWNrZ3JvdW5kOiByZWQgIWltcG9ydGFudDtcbn1cblxuLmNrLWVkaXRvcl9fZWRpdGFibGVfaW5saW5lIHtcbiAgICBtaW4taGVpZ2h0OiA0MDBweCAhaW1wb3J0YW50O1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

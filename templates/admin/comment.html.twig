@@ -1,0 +1,21 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+ 
+    <div class="container__post">
+    <p>Komentarzy: {{count}}</p> <br>
+        <a href="{{ path('admin_comment-creator') }}">Kreator komentarzy</a>
+    </div>
+    <div class="container__post">
+      
+        {% for comment in paginate.data %}
+            {% include '_partials/admin/_bar-comment.html.twig' with { 'comment': comment} %}
+            <div class="admin-content__comment">
+                <div class="admin-content__comment-author">{{ comment.author.username }}</div>
+                <div class="admin-content__comment-text">{{ comment.text }}</div>
+            </div>
+        {% endfor %}
+
+        {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+    </div>
+{% endblock %}

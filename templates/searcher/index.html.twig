@@ -1,0 +1,40 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+{% block body %}
+    {% include '_partials/post/_report-post.html.twig' with {  'data': paginate.data } %}
+    {% include '_partials/ads/_wall-vertical-left.html.twig' %}
+
+    <div class="container__post container__list">
+        {% for post in paginate.data %}
+
+            {% include '_partials/post/_single-list.html.twig' with { 'post': post} %}
+
+            {% if loop.index == 3 or loop.index == 8 %}
+                {% include '_partials/ads/_wall-horizontal.html.twig' %}
+            {% endif %}
+
+            {% if loop.index == 5 %}
+                {% include '_partials/ads/_wall-fake-post.html.twig' %}
+            {% endif %}
+
+
+        {% endfor %}
+        {% if paginate.data|length > 0 %}
+            {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+        {% endif %}
+
+    </div>
+    {% if paginate.data|length == 0 %}
+        <div class="container container--full-height">
+            {% include 'searcher/_empty.html.twig' with { 'key': key } %}
+        </div>
+    {% endif %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('post-list') }}
+{% endblock %}

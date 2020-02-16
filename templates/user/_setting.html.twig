@@ -1,0 +1,76 @@
+{% if isOwner %}
+    <div class="container">
+        <div class="profile-setting__wrap">
+            <form method="post" name="avatar" enctype="multipart/form-data">
+
+                <h1 class="profile-setting__small-title">Avatar</h1>
+                {% if errors['uploadAvatar'] is defined and errors['uploadAvatar']|length > 0 %}
+                    <div class="field-error__frame field-error__frame--title">{{ errors['uploadAvatar'] }}</div>
+                {% endif %}
+
+                <div class="profile-upload">
+                    <div class="profile-upload__avatar"
+                         style="background:url({{ asset(userHelper.getAvatarUrl) }});background-size: cover;"></div>
+                    <div class="profile-upload__action">
+                        <input type="file" name="avatarFile">
+                        <div class="profile-upload__action-info">JPG lub PNG, maksymalnie: 5MB</div>
+                    </div>
+                </div>
+                <br>
+                <input type="submit" name="submit" class="button-secondary button-secondary--small"
+                       value="Ustaw avatar">
+            </form>
+
+
+            {#			<div class="profile-setting__small-title">Nazwa konta <span class="profile-setting__small-title">(brak możliwości zmiany)</span>span></div>#}
+            {#				<input type="text" class="regular-text disabled" value="{{ user.username }}" disabled/>#}
+
+            <h1 class="profile-setting__small-title">Zmień adres email z {{ userHelper.getUser.email }}</h1>
+
+            {% if errors['changeEmail'] is defined and errors['changeEmail']|length > 0 %}
+                <div class="field-error__frame field-error__frame--title">{{ errors['changeEmail'] }}</div>
+            {% endif %}
+
+            {% if errors['changeEmailSuccess'] is defined %}
+                <div class="field-error__frame field-error__frame--success field-error__frame--title">{{ errors['changeEmailSuccess'] }}</div>
+            {% endif %}
+
+            <form method="post" name="changePassword">
+                <h3 class="profile-setting__label">Nowy adres</h3>
+                <input type="email" name="newEmail" class="regular-text" value=""/>
+                <h3 class="profile-setting__label">Powtórz nowy email</h3>
+                <input type="email" name="repeatEmail" class="regular-text" value=""/>
+                <h3 class="profile-setting__label">Hasło do konta</h3>
+                <input type="password" name="passwordEmail" class="regular-text" value=""/>
+                <br><br>
+                <input type="submit" name="submit" class="button-secondary button-secondary--small" value="Zmień email">
+            </form>
+
+
+            <h1 class="profile-setting__small-title">Zmień hasło</h1>
+
+            {% if errors['changePassword'] is defined and errors['changePassword']|length > 0 %}
+                <div class="field-error__frame field-error__frame--title">{{ errors['changePassword'] }}</div>
+            {% endif %}
+
+            {% if errors['changePasswordSuccess'] is defined %}
+                <div class="field-error__frame field-error__frame--success field-error__frame--title">{{ errors['changePasswordSuccess'] }}</div>
+            {% endif %}
+
+            <form method="post" name="password">
+                <h3 class="profile-setting__label">Aktualne hasło</h3>
+                <input type="password" name="oldPassword" class="regular-text" value=""/>
+                <h3 class="profile-setting__label">Nowe hasło</h3>
+                <input type="password" name="newPassword" class="regular-text" value=""/>
+                <h3 class="profile-setting__label">Powtórz nowe hasło</h3>
+                <input type="password" name="newPasswordRepeat" class="regular-text" value=""/>
+                <br><br>
+                <input type="submit" name="submit" class="button-secondary button-secondary--small" value="Zmień hasło">
+            </form>
+        </div>
+    </div>
+
+{% else %}
+    {% include '_partials/message/_access-block-twig.html.twig' only %}
+{% endif %}
+

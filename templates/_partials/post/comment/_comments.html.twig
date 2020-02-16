@@ -1,0 +1,50 @@
+{% if visable %}
+	<div class="single-comment__switch">
+
+		<div class="single-comment__nav">
+			<div data-type="own" class="single-comment__nav-own single-comment__nav-item single-comment__nav-item--active">Dodaj komentarz</div>
+			<div data-type="facebook" class="single-comment__nav-facebook single-comment__nav-item">Komentuj na Facebooku</div>
+		</div>
+
+		<div class="single-comment__switch-item single-comment__switch-own">
+			<div id="single-comment-{{ post.id }}" class="single-comment {{ visable == false ? 'display-none' : '' }}">
+
+
+				<div class="comment">
+
+					{% include '_partials/post/comment/_comments-new.html.twig' with { 'post': post,  'isReply': false} %}
+
+					<div class="comment-list">
+
+
+						{% for comment in comments %}
+
+
+							{% include '_partials/post/comment/_comments-item.html.twig' with { 'comment': comment, 'isReply': false} %}
+
+
+							{% set replied = repliedComments[comment.id] is defined ?  repliedComments[comment.id] : null %}
+
+							<div id="comment-reply-{{ comment.id }}" class="comment-reply">
+								<div class="comment-reply__list">
+									{% for replyComment in replied %}
+										{% include '_partials/post/comment/_comments-item.html.twig' with { 'comment': replyComment, 'isReply': true} %}
+									{% endfor %}
+								</div>
+								{% include '_partials/post/comment/_comments-new.html.twig' with { 'post': post, 'comment': comment, 'isReply': true} %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="single-comment__switch-item single-comment__switch-facebook display-none">
+			<div id="single-comment-{{ post.id }}" class="single-comment">
+				<div data-colorscheme="dark" class="fb-comments" data-href="{{routeHelper.getDomainUrl}}{{ path('post_single',{'id':post.id,'slug': post.slug}) }}" data-numposts="5" data-width="100%"></div>
+			</div>
+		</div>
+
+	</div>
+
+{% endif %}

@@ -1,0 +1,4 @@
+'Invalid credentials.': 'Niepoprawny email lub hasło'
+'This value is not a valid email address.': 'Podaj poprawny adres e-mail'
+'Username could not be found.': 'Podany użytkownik lub hasło jest niepoprawny'
+'An authentication exception occurred.': 'Coś poszło nie tak. Spróbuj jeszcze raz!'

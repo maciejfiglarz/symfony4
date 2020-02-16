@@ -1,0 +1,49 @@
+	{% if rankings[post.id] is defined %}
+<a class="single-ranking" class="white" href="{{ path('ranking') }}">
+
+
+		{% set ranking = rankings[post.id] %}
+		{% set currentPosition = ranking.positionCurr %}
+		{% set diffPosition = ranking.positionDiff %}
+
+
+		{% if currentPosition|length == 1 %}
+			{% set currentPosition = '00'~currentPosition %}
+		{% elseif currentPosition|length == 2 %}
+			{% set currentPosition = '0'~currentPosition %}
+		{% endif %}
+
+		{% if diffPosition  > 0 %}
+			{% set sign = '+' %}
+			{% set arrow  = '<i class="fas fa-long-arrow-alt-right"></i>' %}
+			{% set typeClass  = 'single-ranking__change-arrow--up' %}
+			{% if diffPosition|length  == 1 %}
+				{% set diffPosition = '0'~diffPosition %}
+			{% endif %}
+		{% elseif (diffPosition  < 0 ) %}
+			{% set sign = '' %}
+			{% set arrow  = '<i class="fas fa-long-arrow-alt-right"></i>' %}
+			{% set typeClass  = 'single-ranking__change-arrow--down' %}
+
+			{% set testDiff = diffPosition * -1  %}
+			{% if testDiff|length  == 1 %}
+				{% set diffPosition = '-0'~testDiff %}
+			{% endif %}
+		{% else %}
+			{% set sign = '' %}
+			{% set arrow  = '<i class="fas fa-long-arrow-alt-right"></i>' %}
+			{% set typeClass  = '' %}
+			{% set diffPosition = '0'~diffPosition%}
+		{% endif %}
+
+		<div class="single-ranking__name">TOP 100</div>
+		<div class="single-ranking__value">
+			<strong>{{ currentPosition }}</strong>
+		</div>
+
+		<div class="single-ranking__change">
+			{{ sign}}{{ diffPosition  }}
+			<span class="single-ranking__change-arrow {{typeClass}}">{{ arrow|raw }}</span>
+		</div>
+</a>
+	{% endif %}

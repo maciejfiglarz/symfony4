@@ -1,0 +1,35 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+	<div class="container__post">
+
+		{% for ad in ads %}
+			<form action="" method="post" class="admin-ads__item">
+				<div class="admin-ads__title">{{ ad.name }}
+				</div>
+				<div>
+					{% if ad.name == 'post-first-paragraph' or ad.name == 'post-second-paragraph' or ad.name == 'post-third-paragraph' %}
+						Pozycja:
+						<input type="number" name="position" class="regular-text" value="{{ ad.position }}"/>
+					{% endif %}
+								Aktywne:<input type="checkbox" name="isActive" value="1" {{ad.isActive ? 'checked' : ''}}/>
+				</div>
+				<input type="hidden" name="name" value="{{ ad.name }}"/>
+				<br>
+				Adsense:
+				<input type="checkbox" name="isAdsense" value="1" {{ad.isAdsense ? 'checked' : ''}}/>
+				<br><br>
+				<textarea name="adsense" class="textarea textarea-advertisement">{{ ad.adsense }}</textarea>
+				<br><br><br>
+				Sataku:
+				<input type="checkbox" name="isSataku" value="1" {{ad.isSataku ? 'checked' : ''}}/>
+				<br><br>
+				<textarea name="sataku" class="textarea textarea-advertisement">{{ ad.sataku }}</textarea>
+
+				<input type="submit" class="button-primary" value="Zmień">
+			</form>
+		{% endfor %}
+
+	</div>
+{% endblock %}

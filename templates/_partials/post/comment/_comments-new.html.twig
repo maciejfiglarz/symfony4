@@ -1,0 +1,15 @@
+{% set avatarUrl =  is_granted('ROLE_USER') ? asset(userHelper.getAvatarUrl) : asset(userHelper.getEmptyAvatarUrl)  %}
+<div  id="comment-new-{{comment is defined ? comment.id : ''}}" class="comment-new {{ isReply ? 'comment-new--reply display-none' : 'comment-new--main'}} {{ is_granted('ROLE_USER') ? '' : 'access-block__init' }} ">
+	<div data-avatar="{{ avatarUrl  }}" class="comment-new__avatar" style="background:url({{ avatarUrl }});background-size: cover;"></div>
+	<div class="comment-new__text">
+		<textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'  maxlength="500" class="comment-new__textarea {{ is_granted('ROLE_USER') ? '' : 'access-block__init' }}  {{ isReply ? 'comment-new__textarea-reply' : 'comment-new__textarea-new'}}" placeholder="Zostaw komentarz..."></textarea>
+		<div class="comment-new__action">
+			<div class="comment-new__error-wrap">
+			<div class="comment-new__error display-none"></div>
+		</div>
+			<div class="comment-new__counter">
+				<span class="comment-new__counter--current {{ isReply ? 'comment-new__counter--current-reply' : 'comment-new__counter--current-new'}}">0</span>/1000</div>
+			<div data-id="{{post.id}}" data-comment-parent="{{comment is defined ? comment.id : 0}}" class="comment-new__button {{ is_granted('ROLE_USER') ? '' : 'access-block__init' }} ">Dodaj</div>
+		</div>
+	</div>
+</div>

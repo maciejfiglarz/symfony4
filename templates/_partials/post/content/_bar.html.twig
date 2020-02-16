@@ -1,0 +1,107 @@
+{% if is_granted('ROLE_USER') %}
+	{% set vote = userHelper.getVoteIfVotedPost(post.id) %}
+{% else %}
+	{% set vote = null %}
+{% endif %}
+
+<div class="single-bar">
+	<div class="single-bar__action-wrap">
+
+		<div class="single-bar__vote-wrap">
+
+
+			<div data-id="{{ post.id }}" class="{{ is_granted('ROLE_USER') ? 'single-bar__vote--action' : 'access-block__init' }} {{ vote and vote.isVoteUp ? 'single-bar__vote--voted' : '' }} {{ vote and vote.isVoteDown ? 'single-bar__vote--disabled' : '' }} single-bar__vote single-bar__vote--up">
+				<i class="fas fa-chevron-up"></i>
+				<span class="single--mobile-hide"></span>
+			</div>
+
+
+			<div data-id="{{ post.id }}" class="{{ is_granted('ROLE_USER') ? 'single-bar__vote--action' : 'access-block__init' }} {{ vote and vote.isVoteDown ? 'single-bar__vote--voted' : '' }} {{ vote and vote.isVoteUp ? 'single-bar__vote--disabled' : '' }} single-bar__vote single-bar__vote--down">
+				<i class="fas fa-chevron-down"></i>
+				<span class="single--mobile-hide"></span>
+			</div>
+			{% set voteValue = post.getVoteValue %}
+			{% if vote and vote.isVoteUp %}
+				{% set voteValue = voteValue - 1 %}
+			{% elseif (vote and vote.isVoteDown) %}
+				{% set voteValue = voteValue + 1 %}
+			{% endif %}
+			<div id="score-{{ post.id }}" data-score="{{ voteValue }}" class="single-bar__vote-score">
+				{{ post.getVoteValue }}
+			</div>
+
+
+		</div>
+
+
+
+
+		{#        <a#}
+		{#                data-url="{{ routeHelper.prepareAbsoluteUrlForPost(post.id) }}"#}
+		{#                data-title="{{ post.title|slice(0,60)}}"#}
+		{#                data-description="{{ post.description|slice(0,60)}}"#}
+		{#                data-image="{{ routeHelper.prepareAbsoluteUrlForPostImage(post.id) }}"#}
+		{#                target="_blank" class="single-bar__share-button single-bar__share-facebook">#}
+		{#            <i class="fab fa-facebook"></i>#}
+		{#            Udostępnij#}
+		{#        </a>#}
+
+		{#        <div class="fb-share-button" data-href="{{ routeHelper.prepareAbsoluteUrlForPost(post.id) }}"#}
+		{#             data-layout="button_count" data-size="small"><a target="_blank"#}
+		{#                                                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"#}
+		{#                                                             class="fb-xfbml-parse-ignore">Udostępnij</a></div>#}
+
+		{% set url = routeHelper.prepareAbsoluteUrlForPost(post.id)|url_encode %}
+
+			<a class="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u={{ url }}url}&t={{ post.title }}&app_id={{ settingHelper.getFacebookID }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Udostępnij"> <i class="fab fa-facebook-square"></i>
+			<span>Udostępnij</span>
+		</a>
+		{#        <div class="facebook-share"><i class="fab fa-facebook"></i>Udostępnij</div>#}
+
+	{#        <div class="single-bar__share-button single-bar__share-twitter">#}
+		{#            <i class="fab fa-twitter"></i>#}
+		{#            Twitter#}
+		{#        </div>#}
+
+	</div>
+
+	<div class="display-flex single-bar__action-wrap">
+
+	
+		{% if commentBtn %}
+			<div>
+				<a class="single-bar__action-button" href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}">
+					<i class="fas fa-comment"></i>
+					<span class="single--mobile-hide">Skomentuj</span>
+					({{ post.comments|length }})
+				</a>
+			</div>
+		{% endif %}
+		<div data-id="{{ post.id }}" class="single-bar__action-button single-info__button--link">
+			<i class="fas fa-link"></i>
+			<span>Kopiuj link</span>
+		</div>
+
+		<div data-id="{{ post.id }}" data-type="post" class="single-bar__action-button single-bar__action-button--fix-padding single-info__button--report-mobile  {{ is_granted('ROLE_USER') ? 'single-info__button--report report__init' : 'access-block__init' }}">
+			<i class="fas fa-exclamation-triangle"></i>
+		</div>
+
+		{% if isSingle is defined and isSingle == false %}
+			<div data-id="{{ post.id }}" class="single-bar__action-button single-info__button--more">
+				<i class="fas fa-caret-down single-info__button-dropicon"></i>
+
+				{#            <div class="single-bar__dropdown">#}
+			{#                <div class="single-bar__dropdown-item"><i class="fab fa-facebook"></i> Facebook</div>#}
+				{#                <div class="single-bar__dropdown-item"><i class="fab fa-twitter"></i> Twitter</div>#}
+				{#                <div data-id="{{ post.id }}"#}
+				{#                     class="single-bar__dropdown-item single-info__button--link single-info__button--link-mobile"><i#}
+				{#                            class="fas fa-link"></i> <span>Kopiuj link</span>#}
+				{#                </div>#}
+				{#                <div data-id="{{ post.id }}" data-type="post" class="single-bar__dropdown-item  {{ is_granted('ROLE_USER') ? 'report__init' : 'access-block__init' }}"><i class="fas fa-exclamation-circle"></i>Zgłoś</div>#}
+				{#            </div>#}
+
+			</div>
+		{% endif %}
+	</div>
+
+</div>

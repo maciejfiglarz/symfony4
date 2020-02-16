@@ -1,0 +1,85 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.username) }}
+    {{ form_row(registrationForm.plainPassword) }}
+
+
+    <button class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+
+
+{# <div class="popup-close">
+        <i class="fas fa-times"></i>
+    </div>
+    <h1 class="form-title">Założ konto</h1>
+    <form action="{{path('app_register')}}">
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Email
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="email" type="text"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Nazwa użytkownika
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="username" type="text"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Hasło
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="password" type="text"/>
+        </div>
+
+        <div class="form__wrap">
+            <div class="form__label ">
+                Powtórz hasła
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="password_repeat" type="text"/>
+        </div>
+
+        <input class="button-primary button--full-width" name="create-post" type="submit" value="Założ konto">
+    </form>
+
+</div>
+
+<div class="popup-close">
+    <i class="fas fa-times"></i>
+</div>
+<h1 class="form-title">Zaloguj się</h1>
+{% include '_partials/_facebook.html.twig' with {'text': 'Zaloguj się przez Facebooka'} %}
+{# <div class="popup-info">Zaloguj się przez e-mail</div> #}
+    {# <div class="form__wrap">
+            <div class="form__label">
+                Email
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="email" type="text"/>
+        </div>
+        <div class="form__wrap">
+            <div class="form__label">
+                Hasło
+            </div>
+            <div class="form__error create__post-error--switch create__post-error--url"></div>
+            <input class="form__text-secondary" name="password" type="text"/>
+        </div>
+        <input class="button-primary button--full-width" name="create-post" type="submit" value="Zaloguj"></div> #}
+
+{% endblock %}

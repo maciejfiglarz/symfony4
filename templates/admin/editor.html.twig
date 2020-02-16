@@ -1,0 +1,23 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+    <div class="container__post">
+
+        <form action="" method="post" class="admin-ads__item">
+            <div class="admin-ads__title">Dodaj redaktora</div>
+
+            <input name="email" placeholder="Email" type="email" class="regular-text">
+            <input name="username" placeholder="Username" type="text" class="regular-text">
+            <input name="password" placeholder="Hasło" type="password" class="regular-text">
+            <input type="submit" class="button-primary" value="Zmień">
+        </form>
+        {% for user in editors %}
+            {% include '_partials/admin/_bar-user.html.twig' with { 'user': user} %}
+            <div class="admin-content__user">
+                <div class="admin-content__user-author">#{{ user.id }} {{ user.username }} {{ user.email }}</div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

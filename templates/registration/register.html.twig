@@ -1,0 +1,73 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="authorization">
+            {#            <div class="authorization-preview">#}
+
+            {#                #}
+            {#            </div>#}
+            <div class="authorization-form">
+                <div class="authorization-form__inner">
+                    <h1 class="authorization-title">Załóż konto</h1>
+
+                    {% include '_partials/_facebook-login.html.twig' with {'text': 'Polącz się przez Facebooka'} %}
+
+                    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+                    {% if form_errors(form.email) %}
+                        <div class="authorization-form__alert">{{ form_errors(form.email) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.email) }}
+                    <div class="authorization-form__warning">
+                        <i class="fas fa-exclamation-triangle"></i>Wybranej nazwy konta nie będzie można zmienić!
+                    </div>
+                    {% if form_errors(form.username) %}
+                        <div class="authorization-form__alert">{{ form_errors(form.username) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.username) }}
+
+                    {% if form_errors(form.password.first) %}
+                        <div class="authorization-form__alert">{{ form_errors(form.password.first) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.password.first) }}
+
+                    {% if form_errors(form.password.second) %}
+                        <div class="authorization-form__alert">{{ form_errors(form.password.second) }}</div>
+                    {% endif %}
+                    {{ form_widget(form.password.second) }}
+
+
+                    {% if form_errors(form.agreeTerms) %}
+                        <div class="authorization-form__alert">{{ form_errors(form.agreeTerms) }}</div>
+                        {% set checked = false %}
+                    {% endif %}
+
+                    <div class="authorization-form__confirm ">
+                        {% include '_partials/_checkbox.html.twig' with {'checked': form.agreeTerms.vars.checked, 'text': 'Potwierdzam regulamin serwisu ' ~ settingHelper.getAppName|capitalize ~ settingHelper.getAppDomain ,'name':'agreeTermsFront','jsSelectFront':'true'} %}
+                    </div>
+                    <div class="display-none">
+                        {{ form_widget(form.agreeTerms) }}
+                    </div>
+
+
+                    <div class="authorization-form__button-wrap">
+                        <input class="authorization-form__button button-secondary" type="submit" value="Załóż konto"/>
+                        <div class="">
+                            <a class="authorization-form__button-link forgot-password__init"
+                               href="#">Zapomniałeś hasła?</a>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('authorization') }}
+{% endblock %}

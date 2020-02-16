@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="utf-8"/>
+</header>
+
+<body>
+<h1>
+Witaj w serwisie {{ settingHelper.getAppName|capitalize }}{{ settingHelper.getAppDomain }},
+</h1>
+Cieszymy się, że jesteś z nami! Aby potwierdzić maila w serwisie {{ settingHelper.getAppName|capitalize }}{{ settingHelper.getAppDomain }} kliknij w <a href="{{ routeHelper.getDomainUrl }}{{ path('user_register-mail',{'token': user.tokenRegisterEmail})}}">link.</a>.
+<br><br>
+Pozdrawiamy,<br>
+Zespół {{ settingHelper.getAppName|capitalize }}{{ settingHelper.getAppDomain }}
+<br><br><br>
+<div style="font-size: 10px; color:#006aad;">Jeśli ten email trafił do Ciebie przypadkowo prosimy o zignorowanie tej wiadomości</div>
+</body>
+</html>
+
+

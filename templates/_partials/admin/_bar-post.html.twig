@@ -1,0 +1,32 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+<div class="admin-content__bar">
+    Usunięte:   {% if post.isDeleted  %}
+        <i class="fas fa-check"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isDeleted','redirect':currentPath}) }}">
+            {% trans %}tak{% endtrans %}</a>
+    {% else %}
+        <i class="fas fa-ban"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isDeleted','redirect':currentPath}) }}">
+            {% trans %}nie{% endtrans %}</a>
+    {% endif %}
+    &nbsp;Poczekalnia {% if post.isWaitingRoom  %}
+        <i class="fas fa-check"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isWaitingRoom','redirect':currentPath}) }}">
+            {% trans %}tak{% endtrans %}</a>
+    {% else %}
+        <i class="fas fa-ban"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isWaitingRoom','redirect':currentPath}) }}">
+            {% trans %}nie{% endtrans %}</a>
+    {% endif %}
+
+    &nbsp;Zaakceptowane {% if post.isAccepted  %}
+        <i class="fas fa-check"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isAccepted','redirect':currentPath}) }}">
+            {% trans %}tak{% endtrans %}</a>
+    {% else %}
+        <i class="fas fa-ban"></i>
+        <a href="{{ path('admin_post-action',{'post':post.id,'action': 'isAccepted','redirect':currentPath}) }}">
+            {% trans %}nie{% endtrans %}</a>
+    {% endif %}
+
+</div>

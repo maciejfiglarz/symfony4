@@ -1,0 +1,27 @@
+{#{% include '_partials/popup/report/_report.html.twig' with { 'type': 'post','comment': null, 'post': post } %}#}
+    {% include '_partials/ads/_mobile-bar.html.twig' %}
+
+<div class="container__post single__container single__container--no-margin">
+    {% include '_partials/ads/_single-top.html.twig' %}
+    <article id="{{ post.id }}" class="single single-main ">
+{#        {% include '_partials/post/content/_like-counter.html.twig' with { 'post': post} %}#}
+        {% include '_partials/post/content/_title.html.twig' with { 'title': post.title} %}
+        {% include '_partials/post/content/_content.html.twig' with { 'post': post,'isList': false} %}
+
+        {% include '_partials/post/_collaboration.html.twig' with { 'post': post,'isList': false} %}
+{#        {% include '_partials/ads/_single-content.html.twig' %}#}
+
+        {% include '_partials/post/content/_bar.html.twig' with { 'post': post ,'commentBtn': false,'isSingle':true} %}
+        {% include '_partials/post/content/_navigation.html.twig' with { 'postPrevious': postPrevious,'postNext':postNext} %}
+        {% include '_partials/post/content/_info.html.twig' with { 'post': post,'isSingle':true} %}
+        {% include '_partials/post/content/_source.html.twig' with { 'post': post} %}
+        {% include '_partials/post/comment/_comments.html.twig' with { 'post': post,'visable':true} %}
+
+        {% include '_partials/post/content/_copy-link.html.twig' with { 'post': post} %}
+
+    </article>
+    {# {% include '_partials/ads/_single-under-post.html.twig' %} #}
+    {% include '_partials/post/content/_empty-content.html.twig' with { 'post': post} %}
+    {% include '_partials/post/content/_empty-report.html.twig' only %}
+    {% include '_partials/post/_more-loader.html.twig' only %}
+</div>

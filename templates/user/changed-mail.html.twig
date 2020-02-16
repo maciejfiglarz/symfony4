@@ -1,0 +1,17 @@
+{% extends 'base.site.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container__post single__container">
+        {% include '_partials/message/_default.html.twig' with {'msg': msg} %}
+    </div>
+
+
+{% endblock %}
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        {#         {{ encore_entry_script_tags('post-single') }} #}
+    {% endblock %}

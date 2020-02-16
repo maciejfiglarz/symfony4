@@ -1,0 +1,27 @@
+<div class="change-username">
+    <div class="change-username__content">
+        <div class="change-username__title">
+            Potwierdz nazwę swojego konta
+        </div>
+        <div class="change-username__warning">
+            <i class="fas fa-exclamation-triangle"></i>Wybranej nazwy konta nie będzie można zmienić!
+        </div>
+
+        <div class="change-username__error display-none">
+            <i class="fas fa-exclamation-triangle"></i><span></span>
+        </div>
+        <input type="text" class="change-username__input" value="{{ userHelper.getUser.username }}"/>
+        <div class="change-username__button button-secondary">Potwierdzam</div>
+    </div>
+    <div class="change-username__loader display-none">
+        {% include '_partials/_loader-on-dark-background.html.twig' with { 'isAbsolute': true } %}
+    </div>
+
+    <div class="change-username__success display-none">Na Twój adres wysłaliśmy link, który umożliwi Ci zmianę hasła!
+    </div>
+    <div class="change-username___loader display-none">
+        {% include '_partials/_loader-on-dark-background.html.twig' with { 'isAbsolute': true } %}
+    </div>
+
+
+</div>

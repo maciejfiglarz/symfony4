@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="utf-8"/>
+</header>
+
+<body>
+
+<h1>
+Zmiana adresu email w serwisie {{ settingHelper.getAppName|capitalize }}{{ settingHelper.getAppDomain }},
+</h1>
+Aby potwierdzić zmianę maila w serwisie {{ settingHelper.getAppName|capitalize }}{{ settingHelper.getAppDomain }} kliknij w <a href="{{ routeHelper.getDomainUrl }}{{ path('user_change-mail',{'token': user.tokenChangeEmail})}}">link.</a>.
+<br><br>
+Pozdrawiamy,<br>
+Zespół {{ settingHelper.getAppName }}{{ settingHelper.getAppDomain }}
+<br><br><br>
+<div style="font-size: 10px; color:#006aad;">Jeśli ten email trafił do Ciebie przypadkowo prosimy o zignorowanie tej wiadomości</div>
+</body>
+</html>
+
+

@@ -1,0 +1,127 @@
+
+
+.ads {
+
+  &-mobile {
+    &__content{
+
+    }
+    &__bar {
+      position:fixed;
+      bottom:0;
+      left:-100%;
+      background: var(--color-background-dark);
+      height:55px;
+      width:100%;
+      z-index: 999999;
+      display:none;
+      transition: all 2s ease;
+      @include mobile(){
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        &-toggle {
+          color:white;
+          position: absolute;
+          right:3px;
+          top:0;
+          transform: translateY(-70%);
+          padding:1px 5px;
+          //outline:1px solid red;
+          background: var(--color-primary);
+          border-radius: 2px;
+          font-size:1.5rem;
+          display:none;
+        }
+      }
+      &--animated {
+        left: 0;
+      }
+    }
+  }
+
+  &-wall {
+    &__horizontal {
+      width: 100%;
+      position: relative;
+      margin-top: 20px;
+
+      &--no-margin-top {
+        margin-top: 0;
+      }
+    }
+
+    &__fake-post {
+
+    }
+    @keyframes wallRight {
+      0% {
+        transform: translateX(500px);
+      }
+      20% {
+        transform: translateX(520px);
+      }
+      40% {
+        transform: translateX(500px);
+      }
+      100% {
+        transform: translateX(500px);
+      }
+    }
+    @keyframes wallLeft {
+      0% {
+        transform: translateX(-500px);
+      }
+      40% {
+        transform: translateX(-500px);
+      }
+      60% {
+        transform: translateX(-520px);
+      }
+      80% {
+        transform: translateX(-500px);
+      }
+      100% {
+        transform: translateX(-500px);
+      }
+    }
+    &__vertical {
+      position: fixed;
+      display:none;
+      top: 60px;
+      min-width: 120px;
+      max-width: 130px;
+      min-height: 200px;
+      @include desktop(){
+        display:block;
+      }
+      @include tablet(){
+        display:none !important;
+      }
+      @include mobile(){
+        display:none !important;
+      }
+
+      &-left {
+        left: 50%;
+        transform: translateX(-500px);
+        animation: wallLeft 8s infinite;
+      }
+      &-right {
+        right: 50%;
+        transform: translateX(500px);
+        animation: wallRight 8s infinite;
+      }
+    }
+  }
+
+  &-single {
+    &__top {
+      margin-bottom: 20px;
+    }
+
+    &__under-post {
+      margin-top: 25px;
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{% for post in data %}
+    {% include '_partials/popup/report/_report.html.twig' with { 'type': 'post','comment': null, 'post': post } %}
+{% endfor %}

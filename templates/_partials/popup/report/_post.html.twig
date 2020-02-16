@@ -1,0 +1,16 @@
+<div class="report-comment">
+    <div class="report-comment__avatar"
+         style="background:url({{ asset(post.getImageUrl) }});background-size: cover;"></div>
+    <div class="report-comment__content">
+        {% if post.author is defined %}
+{#        <a href="{{ path('user_profile',{'id':post.author.id,'username':post.author.username,'subpage':'dodane'}) }}"#}
+{#           class="report-comment__content-author">#}
+{#            {{ post.author.username }}#}
+{#        </a>#}
+        {% endif %}
+
+        <div class="report-comment__content-text">
+            {{ post.title }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+{% set params = app.request.attributes.get('_route_params') %}
+{% set type = 'najnowsze' %}
+{% set categories= null %}
+{% if params.categories is defined %}
+	{% set categories  = params.categories|split(',')  ? params.categories|split(',') : null %}
+	{% set type = params.type ? params.type : null %}
+{% endif %}
+
+
+<div class="header-mobile">
+	<nav class="header-mobile__init">
+		<i class="fas fa-bars"></i>
+	</nav>
+	<section class="header-mobile__frame display-none">
+
+		<div class="header-mobile__close">
+			<i class="fas fa-times"></i>
+		</div>
+
+		<div class="header-mobile__logo-wrap">
+			<a href="{{ path("index") }}" class="header-mobile__logo">{{ settingHelper.getAppName|capitalize }}<span class="header-mobile__logo-domain">{{ settingHelper.getAppDomain }}</span>
+			</a>
+		</div>
+		<a href="{{ path('post_new') }}">
+			<div class="header-mobile__item">
+				<i class="fas fa-plus"></i>Dodaj
+				<i class="fas fa-chevron-circle-right header-mobile__item-dropicon"></i>
+			</div>
+		</a>
+		<a href="{{ path('waiting-room__list') }}">
+			<div class="header-mobile__item">
+				<i class="far fa-file-alt"></i>Poczekalnia
+				<i class="fas fa-chevron-circle-right header-mobile__item-dropicon"></i>
+			</div>
+		</a>
+		<a href="{{ path('ranking') }}">
+			<div class="header-mobile__item">
+				<i class="fab fa-hackerrank"></i>Ranking
+				<i class="fas fa-chevron-circle-right header-mobile__item-dropicon"></i>
+			</div>
+		</a>
+		{% if is_granted('ROLE_USER') %}
+
+			<div data-id="user" class="header-mobile__item  header-mobile__item--action">
+				<img class="header-mobile__user-avatar" src="{{asset(userHelper.getAvatarUrl)}}"/>
+				{{ userHelper.getUsername }}
+				<i class="fas fa-caret-down header-mobile__item-dropicon"></i>
+			</div>
+
+			<div id="child-user" class="header-mobile__wrap-child display-none">
+				<a href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'dodane'}) }}">
+					<div class="header-mobile__item header-mobile__item-child">
+						<i class="fas fa-user header-mobile__item-child--icon"></i>
+						Profil
+					</div>
+				</a>
+				<a href="{{ path('logout') }}">
+					<div class="header-mobile__item header-mobile__item-child">
+						<i class="fas fa-sign-out-alt header-mobile__item-child--icon"></i>
+						Wyloguj
+					</div>
+				</a>
+			</div>
+
+		{% else %}
+
+
+			<a href="{{ path('register') }}">
+				<div class="header-mobile__item">
+					<i class="fas fa-user"></i>Założ konto
+					<i class="fas fa-chevron-circle-right header-mobile__item-dropicon"></i>
+				</div>
+			</a>
+			<a href="{{ path('app_login') }}">
+				<div class="header-mobile__item">
+					<i class="fas fa-lock"></i>Zaloguj się
+					<i class="fas fa-chevron-circle-right header-mobile__item-dropicon"></i>
+				</div>
+			</a>
+		{% endif %}
+
+		{% if is_granted('ROLE_USER') %}
+			<div data-id="notification" class="header-mobile__item  header-mobile__item--action">
+				{% if notificationHelper.fetchAllActionNotificationForLoggedUser(5)|length > 0 %}
+					<i class="fas fa-bell"></i>
+				{% else %}
+					<i class="far fa-bell"></i>
+				{% endif %}
+				Powiadomienia
+				<i class="fas fa-caret-down header-mobile__item-dropicon"></i>
+			</div>
+
+			<div id="child-notification" class="header-mobile__wrap-child display-none">
+				{% for notification in notificationHelper.fetchAllActionNotificationForLoggedUser(5) %}
+
+					{% if notification.isComment %}
+						<div class="header-mobile__item header-mobile__item--no-padding header-mobile__item-child ">
+							<a href="{{ path('post_single',{'id': notification.post.id, 'slug' : notification.post.slug, 'notification': notification.id}) }}" class="header-notification__dropdown-item {{ notification.isActive == true ? 'header-notification__dropdown-item--active' :'' }}">
+								<div class="header-notification__avatar" style="background:url({{ asset(notification.userMark.getAvatarUrl) }});background-size: cover;"></div>
+								{{ notification.userMark.username }}
+								oznaczył Cię w komentarzu</a>
+						</div>
+					{% elseif (notification.isAddedFirst) %}
+						<a href="{{ path('page_good-practise', {'notification': notification.id }) }}" class="header-notification__dropdown-item {{ notification.isActive == true ? 'header-notification__dropdown-item--active' :'' }}">
+							Chcesz, aby Twój post był lepiej widoczny?</a>
+					{% endif %}
+
+				{% endfor %}
+				{% if notificationHelper.fetchAllActionNotificationForLoggedUser(5)|length ==0 %}
+					<div class="header-mobile__notification-empty">Nie posiadasz żadnych powiadomień</div>
+				{% endif %}
+
+				{% if notificationHelper.fetchAllActionNotificationForLoggedUser(10)|length > 0 %}
+					<a class="header-notification__dropdown-more" href="{{ path('user_profile',{'id':userHelper.getUser.id,'username':userHelper.getUser.username,'subpage':'powiadomienia'}) }}">
+						Zobacz więcej
+					</a>
+				{% endif %}
+			</div>
+		{% endif %}
+
+		<div data-id="searcher" class="header-mobile__item  header-mobile__item--action">
+			<i class="fas fa-search"></i>
+			Wyszukaj
+			<i class="fas fa-caret-down header-mobile__item-dropicon"></i>
+		</div>
+
+		<div id="child-searcher" class="header-mobile__wrap-child display-none">
+			<div class="header-mobile__item header-mobile__item--no-padding header-mobile__item-child header-mobile__item-child--no-bg">
+				<form method="post" class="header-mobile__searcher">
+					<input type="text" class="regular-text regular-text--mobile-searcher" placeholder="Wpisz słowo kluczowe"/>
+					<div>
+						<button type="submit" class="button-primary button-primary--mobile-searcher">
+							<i class="fas fa-caret-right"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div data-id="sort" class="header-mobile__item header-mobile__item--action">
+			<i class="fas fa-sort-amount-up"></i>
+			Sortuj
+			<i class="fas fa-caret-down header-mobile__item-dropicon"></i>
+		</div>
+
+		<div id="child-sort" class="header-mobile__wrap-child display-none">
+			<div class="header-mobile__item header-mobile__item-child header-mobile__item-child--no-bg">
+				{% include 'header/_sorter-mobile.html.twig' %}
+			</div>
+
+		</div>
+	</section>
+
+</div>

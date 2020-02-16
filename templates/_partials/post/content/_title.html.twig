@@ -1,0 +1,5 @@
+{% if post.isPost %}
+    <h1 class="single-title">
+        <a class="white" title="{{ post.description|striptags }}" href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}">{{ title }}</a>
+    </h1>
+{% endif %}

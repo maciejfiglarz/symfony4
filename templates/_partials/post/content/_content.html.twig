@@ -1,0 +1,88 @@
+<div class="single-content">
+
+	{% include '_partials/post/content/_ranking.html.twig' with { 'post':post} %}
+	{% if post.isPost %}
+
+		{% if post.isYoutubeLink %}
+			{% if isList %}
+				<div data-id="{{ post.youtubeID }}" class="single-image__wrap single-image__wrap-youtube" style="background: url({{ post.getImageUrl }}) no-repeat center center;   -webkit-background-size: cover;
+												                         -moz-background-size: cover;
+												                         -o-background-size: cover;
+												                         background-size: cover;">
+					<i class="single-image__icon single-image__icon-youtube fas fa-play-circle"></i>
+				</div>
+			{% else %}
+				<iframe width="100%" height="350" src="https://www.youtube.com/embed/{{ post.youtubeID }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			{% endif %}
+
+
+		{% elseif(post.isImageFromLink or post.isImageFromDisc) %}
+
+			<div class="single-image__wrap">
+
+				<a  href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}"><img alt="{{ post.title }}" src="{{ post.getImageUrl }}"></a>
+			</div>
+
+
+		{% endif %}
+
+		{% if post.description %}
+			<div class="single-description {% if isList %} single-description--short {% endif %}">
+				{% if isList == false %}
+				{# {{ postHelper.insertAdsIntoDescription(post.description)|raw }}			 #}
+				{{post.description|raw}}
+				{% else %}
+
+					{% set description =  post.description|striptags|raw %}
+					{% set length = description|length %}
+
+					{% if length > 255 %}
+						{% set firstParagraph  = description|slice(0,255) ~ '<span class="single-description__dots">...</span><span class="single-description__more display-none">' %}
+						{% set secondParagraph  = description|slice(255, length) ~ '</span>' %}
+
+						{{ ((firstParagraph ~ secondParagraph)|raw) }}
+		
+						<a  href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}"class="single-description__more-redirect">CZYTAJ DALEJ</a>
+					{% else %}
+						{{ description|striptags|raw }}
+					{% endif %}
+
+				{% endif %}
+
+			</div>
+
+		{% endif %}
+
+	{% elseif(post.isGraphic) %}
+
+		<div class="single-image__wrap">
+			<div
+				class="single-graphic" style="max-width: {{ post.temponaryImageWidth }}px;">
+				{#            <a class="single-graphic__save" href="{{ post.getImageUrl }}" download target="_blank"><i class="fas fa-cloud-download-alt"></i></a>#}
+				{% if isList %}
+					<a title="{{ post.description|striptags }}" rel="nofollow" href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}">
+					{% endif %}
+					<img alt="{{ post.title }}" src="{{ post.getImageUrl }}">
+					{% if isList %}
+					</a>
+				{% endif %}
+
+				<div data-height="{{ post.temponaryImageHeight }}" data-width="{{ post.temponaryImageWidth }}" class="single-graphic__frame" style="bottom:0;">
+					<h1 class="single-graphic__title">
+						{% if isList %}
+							<a class="single-graphic__title-link" href="{{ path('post_single',{'id':post.id,'slug':post.slug}) }}">
+							{% endif %}
+							{{ post.title }}
+							{% if isList %}
+							</a>
+						{% endif %}
+					</h1>
+					{% if post.description|length > 0 %}
+						<p class="single-graphic__description {{ post.description|length == 0 ? 'single-graphic__description--empty':'' }}">{{ post.description }}</p>
+					{% endif %}
+				</div>
+
+			</div>
+		</div>
+	{% endif %}
+</div>

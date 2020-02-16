@@ -1,0 +1,34 @@
+<div class="header-label">
+	{% include 'header/_searcher.html.twig' %}
+	{% if is_granted('ROLE_USER') %}
+
+		<div class="header-label__item header-label__item--hover header-label__item--nofitication">
+			{% if notificationHelper.countNotificationForLoggedUserIfActive > 0 %}
+				<i class="fas fa-bell">
+					<div class="header-label__item-bell">
+                    {# {{ notificationHelper.fetchAllActionNotificationForLoggedUser()|length}} #}
+                    </div>
+				</i>
+			{% else %}
+				<i class="far fa-bell"></i>
+			{% endif %}
+			{% include 'header/_notification-dropdown.html.twig' %}
+		</div>
+		<div class="header-label__item header-label__item--hover header-label__item--profile">
+			<div data-url="{{asset(userHelper.getAvatarUrl)}}" class="header-label__avatar" style="background:url({{ asset(userHelper.getAvatarUrl)}});background-size: cover;"></div>
+			{% include 'header/_profile-dropdown.html.twig' %}
+		</div>
+
+	{% else %}
+		<div class="header-label__item header-label__item--hover header-label__item--login">
+			<i class="fas fa-user header-label__icon"></i>
+			{% include 'header/_login-dropdown.html.twig' %}
+		</div>
+	{% endif %}
+
+
+	<a href="{{ path("post_new") }}" class="header-label__new button-primary button-primary--small add-action">
+		<i class="fas fa-plus"></i>
+		Dodaj</a>
+
+</div>

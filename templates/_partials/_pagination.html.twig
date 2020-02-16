@@ -1,0 +1,20 @@
+{% set routeParams = paginate.routeParams %}
+<nav class="pagination">
+    <ul class="pagination__wrap">
+        {% if paginate.pages > 1 %}
+            {% for  page in 1..paginate.pages %}
+                <li class="pagination__item{% if page == paginate.page %} pagination__item--active{% endif %}">
+                    <a class="pagination__item-link" href="{{ path( app.request.attributes.get('_route'), routeParams|merge({page: page}) ) }}">
+                        {{ page }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="pagination__item pagination__item--disabled">
+                <a class="pagination__item-link">
+                    1
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

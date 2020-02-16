@@ -1,0 +1,31 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        Tydzień: {{ "now"|date("W") }}
+        <br><br>
+        <table class="table">
+            <tr>
+                <td>Tytuł</td>
+                <td>Wyświetleń</td>
+                <td>Tydzień</td>
+                <td>Rok</td>
+            </tr>
+            {% for statistic in paginate.data %}
+                {% if statistic.post %}
+                    <tr>
+                        <td>
+                            <a class="white" target="_blank"
+                               href="{{ path('post_single',{'id':statistic.post.id,'slug':statistic.post.slug}) }}">{{ statistic.post.title }}</a>
+                        </td>
+                        <td>{{ statistic.views }}</td>
+                        <td>{{ statistic.statisticWeek.week is defined ? statistic.statisticWeek.week : '' }}</td>
+                        <td>{{ statistic.statisticWeek.year is defined ? statistic.statisticWeek.year : '' }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+    </div>
+{% endblock %}

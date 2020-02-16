@@ -1,0 +1,109 @@
+.admin {
+
+
+  &-ads {
+    &__item {
+      margin: 20px 0;
+    }
+
+    &__title {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  &-tags {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  &-header {
+    background: black;
+    color: white;
+
+    &__link {
+      padding: 15px;
+      display: inline-block;
+      color: white;
+      font-size: 1.5rem;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+
+    &__menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+
+  }
+
+  &-content {
+    &__bar {
+      font-size: 1.5rem;
+      margin-bottom: -20px;
+      margin-top: 40px;
+      padding: 5px;
+      background: var(--color-secondary);
+      color: white;
+
+    }
+
+    &__comment {
+      margin-top: 40px;
+
+      &-author {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+      }
+
+      &-text {
+        background: var(--color-background-dark);
+        padding: 8px;
+        font-size: 1.4rem;
+        border-radius: $border-radius;
+      }
+    }
+
+    &__category {
+      margin-top: 40px;
+    }
+
+    &__user {
+      margin-top: 40px;
+    }
+  }
+}
+
+.table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--color-background);
+}
+
+.table tr:hover {
+  background: var(--color-background-dark);
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}

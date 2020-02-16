@@ -1,0 +1,21 @@
+<div class="header-login__dropdown">
+    {% include '_partials/_facebook-login.html.twig' with {'text': 'Zaloguj się przez Facebooka'} %}
+    <form action="{{ path('app_login') }}" method="POST" autocomplete="off">
+
+        <input class="regular-text regular-text--login-dropdown" name="email" type="email" placeholder="Email"/>
+        <input
+                class="regular-text regular-text--login-dropdown" name="password" type="password" placeholder="Hasło"/>
+        {% include '_partials/_checkbox.html.twig' with {'text': 'Zapamiętaj mnie','name':'_remember_me','jsSelectFront':'false'} %}
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+        <input class="button-primary button--full-width login-action" name="create-post" type="submit" value="Zaloguj">
+        <div class="header-login__dropdown-footer">
+            <a class="link-on-bright" href="{{ path('register') }}">Załóż konto</a>
+            &nbsp; | &nbsp;
+            <a class="forgot-password__init" href="">Zapomniałeś hasła?</a>
+            </a>
+        </div>
+    </form>
+</div>

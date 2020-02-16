@@ -1,0 +1,12 @@
+<h1 class="access-block__title">Dołącz do nas!</h1>
+<h5 class="access-block__info">Aby skorzystać z wszystkich funkcji naszego serwisu musisz się zalogować.</h5>
+<div class="access-block__btn-wrap">
+    <a class="button-secondary" href="{{path('app_login')}}">Zaloguj się</a>
+    <a class="button-secondary" href="{{path('register')}}">Załóż konto</a>
+</div>
+<div class="access-block__separator access-block__info">
+    lub
+</div>
+{#<div class="access-block__btn-wrap access-block__btn-wrap--no-margin">#}
+    {% include '_partials/_facebook-login.html.twig' with {'text': 'Polącz się przez Facebooka'} %}
+{#</div>#}

@@ -1,0 +1,56 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~post-list~post-new~post-single.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "post-new": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~post-list~post-new~post-single.js",
+        "/build/vendors~ckeditor~post-new.js",
+        "/build/ckeditor~post-new.js",
+        "/build/post-new.js"
+      ],
+      "css": [
+        "/build/post-new.css"
+      ]
+    },
+    "post-single": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~post-list~post-new~post-single.js",
+        "/build/post-list~post-single.js",
+        "/build/post-single.js"
+      ]
+    },
+    "post-list": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~post-list~post-new~post-single.js",
+        "/build/post-list~post-single.js",
+        "/build/post-list.js"
+      ]
+    },
+    "authorization": {
+      "js": [
+        "/build/runtime.js",
+        "/build/authorization.js"
+      ]
+    },
+    "ckeditor": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~ckeditor~post-new.js",
+        "/build/ckeditor~post-new.js",
+        "/build/ckeditor.js"
+      ]
+    }
+  }
+}

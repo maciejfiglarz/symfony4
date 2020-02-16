@@ -1,0 +1,4 @@
+
+    <div id="single-source-{{ post.id }}"  class="single-source {% if post.source|length == 0 %}display-none{% endif %}">
+        Źródło: {{ post.source|length > 0 ? postHelper.prepareSource(post.source)|raw : '' }}
+    </div>

@@ -1,0 +1,78 @@
+{% if is_granted('ROLE_USER') %}
+    {% set voteComment = userHelper.getVoteCommentIfVotedComment(comment.id) %}
+{% else %}
+    {% set voteComment = null %}
+{% endif %}
+
+   {% set voteValue = comment.getVoteValue %}
+     {% if voteComment and voteComment.isVoteUp %}
+         {% set voteValue = voteValue - 1 %}
+     {% elseif (voteComment and voteComment.isVoteDown) %}
+         {% set voteValue = voteValue + 1 %}
+     {% endif %}
+
+{#{% include '_partials/popup/report/_report.html.twig' with { 'type': 'comment','comment': comment, 'post': null } %}#}
+
+<div id="comment-{{ comment.id }}"
+     class="comment-list__item {{ isReply ? 'comment-list__item--reply' : '' }} {{ notification and notification.comment.id == comment.id ? 'comment-list__item-scroll' : '' }}">
+    <div class="comment-list__item-avatar"
+         style="background:url({{ asset(comment.author.getAvatarUrl) }});background-size: cover;"></div>
+    <div class="comment-list__item-info">
+        <div class="comment-list__item-author">
+            <a class="comment-list__item-author"
+               href="{{ path('user_profile',{'id':comment.author.id,'username':comment.author.username,'subpage':'dodane'}) }}">{{ comment.author.username }}</a>
+
+            <span id="comment-score-{{ comment.id }}" data-score="{{ voteValue }}"
+                  class="comment-list__vote-score">{{ comment.voteValue }}</span>
+            pkt.
+            {{ dateHelper.tranformDateAgo(comment.createdAt|date('Y-m-d H:i:s')) }}
+        </div>
+
+        <div class="comment-list__item-text {{ comment.isBan or comment.isDeleted ? 'comment-list__item-text--ban': '' }}">
+            {% if comment.isBan %}
+                Treść tego komentarza została zablokowana przez administratora
+            {% elseif(comment.isDeleted) %}
+                Treść tego komentarza została usunięta przez autora
+            {% else %}
+                {{ commentHelper.prepareCommentWithNotification(comment.text)|raw }}
+            {% endif %}
+        </div>
+
+        <div class="comment-list__action">
+
+            <div class="comment-list__action--disable {{ comment.isBan or comment.isDeleted ? '': 'display-none' }}"></div>
+
+            <span data-id="{{ isReply ? comment.replyComment.id : comment.id }}"
+                  data-username="{{ comment.author.username }}"
+                  class="comment-list__action-item  {{ is_granted('ROLE_USER') ? 'comment-list__item-action--reply' : 'access-block__init' }}">
+				<i class="fas fa-reply"></i>
+				Odpowiedz</span>
+
+            <span data-comment="{{ comment.id }}"
+                  class="comment-list__vote {{ is_granted('ROLE_USER') ? 'comment-list__vote--action' : 'access-block__init' }} {{ voteComment and voteComment.isVoteUp and comment.isDeleted == false and comment.isBan == false ? 'comment-list__vote--voted' : '' }}  comment-list__vote--up">
+				<i class="fas fa-angle-up  comment-list__vote--icon"></i>
+			</span>
+
+            <span data-comment="{{ comment.id }}"
+                  class="comment-list__vote {{ is_granted('ROLE_USER') ? 'comment-list__vote--action' : 'access-block__init' }} {{ voteComment and voteComment.isVoteDown and comment.isDeleted == false and comment.isBan == false ? 'comment-list__vote--voted' : '' }} comment-list__vote--down">
+				<i class="fas fa-angle-down  comment-list__vote--icon"></i>
+			</span>
+
+        </div>
+
+        <div class="comment-list__action--corner">
+            {% if comment.isDeleted == false and comment.isBan == false %}
+                <span data-id="{{ comment.id }}" data-type="comment" class="comment-list__action-item  {{ is_granted('ROLE_USER')  ? 'report__init' : 'access-block__init' }}">
+                <i class="fas fa-exclamation-circle"></i>
+                </span>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') and userHelper.getUser.id == comment.author.id and comment.isDeleted == false and comment.isBan == false %}
+                <span data-comment="{{ comment.id }}"
+                      class="comment-list__action-item comment-list__action-item--remove {{ is_granted('ROLE_USER') ? 'comment-list__remove' : 'access-block__init' }}"><i
+                            class="fas fa-times"></i></span>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

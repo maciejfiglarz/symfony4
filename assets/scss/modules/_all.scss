@@ -1,0 +1,116 @@
+
+// $width-tablet: 780px;
+$width-mobile: 600px;
+$width-desktop: 1140px;
+$width-max: 1110px;
+$width-max-small: 500px;
+$width-max-post: 730px;
+
+$border-radius : 6px;
+$border-radius-small : 6px;
+//$border-color: #dddddd;
+$height-header: 45px;
+
+//$color-text-main: white;
+//$color-text-bright: #acacac;
+
+//$color-error: #c9000f;
+//$color-success: #009542;
+//$color-warning: #f8b317;
+
+//$color-bright-action: #575757;
+//$color-bright-action-hover: #8a8a8a;
+
+
+
+//$color-background-dark:#1f1f1f;
+//$color-background:#262626;
+//$color-background-light: #333333;
+//$color-background-light-hover:#2f2f2f;
+
+//$color-link-primary: #acacac;
+//$color-link-primary-hover:  white;
+
+//$color-link-secondary: #e1e1e1;
+//$color-link-secondary-hover: white;
+
+$color-facebook: #3b5998;
+$color-facebook-hover: #2a4786;
+
+$color-twitter: #15aabf;
+$color-twitter-hover: #0e91a4;
+
+
+//$color-primary: #ff5818;
+//$color-primary-hover: #eb490b;
+
+//$color-selected: #ed541a;
+
+//$color-secondary: #fd4600;
+//$color-secondary-hover: #e6a905;
+
+// #0180fe
+
+
+
+
+@mixin mobile() {
+    @media screen and (max-width: #{$width-mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media (min-width: #{$width-mobile}) and (max-width: #{$width-desktop}) {
+        @content;
+    }
+}
+
+
+
+
+@mixin desktop() {
+    @media (min-width: #{$width-desktop}) {
+        @content;
+    }
+}
+
+@mixin placeholderColor($color) {
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $color;
+        opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $color;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $color;
+    }
+}
+
+@mixin fontFunctional() {
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    &--bold {
+        font-weight:500;
+    }
+}
+@mixin fontHeader() {
+    font-family: 'Kanit', sans-serif;
+    font-weight:700;
+    &--bold {
+        font-weight:500;
+    }
+}
+@mixin fontGraphic() {
+    font-family: var(--font-graphic);
+}
+@mixin linkBrightOnDark() {
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    &--bold {
+        font-weight:500;
+    }
+}

@@ -1,0 +1,49 @@
+{% set params = app.request.attributes.get('_route_params') %}
+{% set type = 'najnowsze' %}
+{% set categories= null %}
+    {% if params.categories is defined %}
+        {% set categories  = params.categories|split(',')  ? params.categories|split(',') : null %}
+        {% set type = params.type ? params.type : null %}
+    {% endif %}
+
+
+<ul class="header-sort__wrap">
+    <li id="newest"
+        class="header-sort__item {{ type == 'najnowsze' ? 'header-sort__item--active' : '' }} header-sort__type">
+        Najnowsze
+    </li>
+    <li id="interesting"
+        class="header-sort__item  {{ type == 'najciekawsze' ? 'header-sort__item--active' : '' }} header-sort__type">
+        Najciekawsze
+    </li>
+    <li id="popular"
+        class="header-sort__item {{ type == 'popularne' ? 'header-sort__item--active' : '' }}  header-sort__type">
+        Popularne
+    </li>
+</ul>
+
+<hr class="header-sort__separator">
+<ul class="header-sort__wrap">
+    {% for category in searcherHelper.fetchCategories %}
+        <div id="{{ category.id }}"
+             class="header-sort__item header-sort__category {{ category.id in categories ? 'header-sort__item--active' : '' }}">
+            {{ category.name }}
+        </div>
+    {% endfor %}
+</ul>
+<hr class="header-sort__separator">
+<div class="button--center">
+    <form name="sort" method="post" action="{{ path('sort_url') }}">
+        <button class="button-secondary button-secondary--small" type="submit">Pokaż</button>
+        <div class="display-none">
+            <input name="sortType[]" class="sort-type-desktop"  id="checkbox-desktop-type-newest" value="newest" type="checkbox" {{ type == 'interesting' ? 'newest' : '' }}>
+            <input name="sortType[]" class="sort-type-desktop" id="checkbox-desktop-type-interesting" value="interesting" type="checkbox"{{ type == 'interesting' ? 'checked' : '' }}>
+            <input name="sortType[]" class="sort-type-desktop" id="checkbox-desktop-type-popular" value="popular" type="checkbox" {{ type == 'popularne' ? 'checked' : '' }}>
+
+            {% for category in searcherHelper.fetchCategories %}
+                <input name="sortCategory[]" id="checkbox-desktop-category-{{ category.id }}" value="sortCategory-{{ category.id }}"
+                       type="checkbox" {{ category.id in categories ? 'checked':'' }}/> {{ category.name }}
+            {% endfor %}
+        </div>
+    </form>
+</div>

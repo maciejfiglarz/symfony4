@@ -1,0 +1,54 @@
+//.user {
+//    background:$color-background-light;
+//    max-width:600px;
+//    margin:0 auto;
+//    padding:30px;
+//    border-radius: $border-radius;
+//    color:white;
+//
+//    &-title {
+//        margin-bottom:30px;
+//        font-size:2.3rem;
+//    }
+//
+//    &-login {
+//
+//        &__dropdown {
+//            width: 347px;
+//            position: absolute;
+//            right: 0;
+//            top: 50px;
+//            z-index: 9999999999;
+//            padding: 0 20px 20px 20px;
+//            border-radius: $border-radius;
+//            background: $color-background-light;
+//            color: $color-text-main;
+//            display: none;
+//            &:hover {
+//                display: block;
+//                .header-label__icon-wrap--login {
+//                    color: $color-primary !important;
+//                    background: $color-background-light !important;
+//                }
+//            }
+//
+//            //a {
+//            //    color: $color-link-primary;
+//            //
+//            //    &:hover {
+//            //        color: $color-link-primary-hover;
+//            //    }
+//            //}
+//
+//
+//            &-footer {
+//                display: flex;
+//                // justify-content: space-between;
+//                // text-align:right;
+//                margin-top: 10px;
+//            }
+//        }
+//
+//
+//    }
+//}

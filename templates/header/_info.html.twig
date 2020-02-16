@@ -1,0 +1,29 @@
+<div
+	class="header-info">
+	<a href="{{ path("index") }}" class="header__logo">{{ settingHelper.displaySetting('app-name')|raw }}<span class="header__logo-domain">{{ settingHelper.displaySetting('app-domain')|raw }}</span>
+	</a>
+	<div>
+		<div class="fb-like" data-href="https://www.facebook.com/test" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
+	</div>
+</div>
+
+
+<nav class="header-menu">
+	<div class="header-menu__item">
+		<span>Przeglądaj</span>
+
+		<div class="header-menu__dropdown">
+			{% include 'header/_sorter.html.twig' %}
+		</div>
+	</div>
+	<a href="{{ path('waiting-room__list') }}" class="header-menu__item white">
+		<span>
+			Poczekalnia
+		</span>
+	</a>
+	<a href="{{ path('ranking') }}" class="header-menu__item white">
+		<span>
+			Ranking
+		</span>
+	</a>
+</nav>

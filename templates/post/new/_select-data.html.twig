@@ -1,0 +1,75 @@
+<div class="field-wrap field-wrap--no-padding">
+	<div class="field-label">
+		<div class="field-label__title">
+			Dodaj:
+		</div>
+	</div>
+	<div class="field-wrap__content">
+
+		<div class="create-select">
+
+			<div class="create-select__item create-select__init">
+				<span class="create-select__init-icon">
+					<i class="fas fa-cloud-upload-alt"></i>
+				</span>
+				<span class="create-select__init-label">Grafika: zdjęcie z dysku</span>
+				<i class="fas fa-chevron-circle-down create-select__item-dropicon"></i>
+			</div>
+
+			<div class="create-select__dropdown display-none">
+				<div data-id="graphic" class="create-select__item  create-select__item--action">
+					<i class="fas fa-image"></i>
+					Grafika
+					<i class="fas fa-caret-down create-select__item-dropicon"></i>
+				</div>
+
+				<div id="child-graphic" class="create-select__wrap-child display-none">
+					<div data-type="graphic" data-child="disc" class="create-select__item create-select__item--no-padding create-select__item create-select__item--background create-select__item-child">
+						<i class="create-select__item-child--icon fas fa-cloud-upload-alt"></i>
+						Zdjęcie z dysku
+					</div>
+
+					<div data-type="graphic" data-child="link" class="create-select__item create-select__item--no-padding create-select__item create-select__item--background create-select__item-child">
+						<i class="create-select__item-child--icon fas fa-link"></i>
+						Zdjęcie z linku
+					</div>
+				</div>
+
+
+				<div data-id="post" class="create-select__item create-select__item--action">
+					<i class="fas fa-align-left"></i>
+					Post
+					<i class="fas fa-caret-down create-select__item-dropicon"></i>
+				</div>
+				<div id="child-post" class="create-select__wrap-child display-none">
+					<div data-type="post" data-child="disc" class="create-select__item create-select__item--no-padding create-select__item create-select__item--background create-select__item-child">
+						<i class="create-select__item-child--icon fas fa-cloud-upload-alt"></i>
+						Zdjęcie z dysku
+					</div>
+					<div data-type="post" data-child="youtube" class="create-select__item create-select__item--no-padding create-select__item create-select__item--background create-select__item-child">
+						<i class="create-select__item-child--icon fab fa-youtube"></i>
+						Film z Youtube
+					</div>
+					<div data-type="post" data-child="link" class="create-select__item create-select__item--no-padding create-select__item create-select__item--background create-select__item-child">
+						<i class="create-select__item-child--icon fas fa-link"></i>
+						Zdjęcie z linku
+					</div>
+				</div>
+			</div>
+
+			<select name="selectType" id="type-post" class="display-none">
+				<option value="post">post</option>
+				<option value="graphic" selected>graphic</option>
+			</select>
+
+			<select name="selectData" id="type-data" class="display-none">>
+				<option value="imageFromDisc" selected>Zdjęcie z dysku</option>
+				<option value="youtubeLink">Link z Youtube</option>
+				<option value="imageFromLink">Zdjęcie z url</option>
+			</select>
+		</div>
+
+
+	</div>
+
+</div>

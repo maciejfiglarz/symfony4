@@ -1,0 +1,24 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+
+	<div class="container">
+		<form action="" method="POST">
+			<input type="hidden" name="id" value="{{post.id}}"/>
+            <br><br>
+            Tytuł:<br>
+			<input type="text" class="regular-text" name="title" value="{{post.title}}"/>
+            <br><br>
+            Slug:<br>
+			<input type="text" class="regular-text" name="slug" value="{{post.slug}}"/>
+			<textarea name="description" class="ckeditor">{{post.description}}</textarea>
+			<input class="button-primary" type="submit" value="Zmień"/>
+		</form>
+
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('ckeditor') }}
+{% endblock %}

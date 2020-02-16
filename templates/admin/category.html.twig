@@ -1,0 +1,31 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <form method="post" action="">
+            <div class="admin-content__category-name">
+                <input placeholder="Nowa kategoria" class="regular-text regular-text--middle regular-text--small-font" type="text" name="name" value="">
+                <input class="button-primary button-primary--small" type="submit" value="Dodaj"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="container container__category">
+
+        {% for category in paginate.data %}
+
+            {% include '_partials/admin/_bar-category.html.twig' with { 'category': category} %}
+            <div class="admin-content__category">
+                <form method="post" action="">
+                    <div class="admin-content__category-name">#{{ category.id }}
+                        <input class="regular-text regular-text--middle regular-text--small-font" type="text" name="name" value="{{ category.name }}">
+                        <input class="regular-text regular-text--middle regular-text--small-font" type="hidden" name="id" value="{{ category.id }}"/>
+                        <input class="button-primary button-primary--small"  type="submit" value="Zmień"/>
+                    </div>
+                </form>
+            </div>
+        {% endfor %}
+
+        {% include '_partials/_pagination.html.twig' with {'paginate': paginate} only %}
+    </div>
+{% endblock %}

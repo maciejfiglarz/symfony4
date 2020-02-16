@@ -1,0 +1,15 @@
+{% extends 'base.site.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ settingHelper.displaySetting('youtube-offer')|raw }}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    {{ encore_entry_script_tags('post-list') }}#}
+{% endblock %}

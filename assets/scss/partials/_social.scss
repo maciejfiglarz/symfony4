@@ -1,0 +1,81 @@
+.facebook-share {
+  background:#1777F2;
+}
+
+
+.facebook-share {
+  background-color:#1777F2;
+  font-size:1.2rem;
+  font-weight:bold;
+  text-align:center;
+  color:white !important;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-decoration:none;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+
+  i{
+    color:white;
+    margin-right:5px;
+  }
+  span {
+    font-size:1.1rem !important;
+  }
+}
+
+.facebook-login {
+  background: #4367b0;
+  color: white;
+  font-size: 1.3rem;
+  padding: 7px;
+  border-radius: $border-radius-small;
+  margin: 20px 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 215px;
+
+  &__wrap {
+    &--align-center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  i {
+    font-size: 2rem;
+    margin-right: 5px;
+  }
+}
+.facebook-access {
+  padding: 12px 10px 10px 10px;
+  color: var(--color-link-secondary);
+  font-size: 1.6rem;
+  @include fontFunctional();
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+  background: #4367b0;
+  display:flex;
+  justify-content: space-between;
+  opacity: 0.95;
+  i{
+    margin-right: 7px;
+    margin-top:1px;
+  }
+
+  &:hover {
+    color: var(--color-link-secondary-hover);
+    opacity: 1;
+  }
+}

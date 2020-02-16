@@ -1,0 +1,92 @@
+{% set monthsArray = {
+    '01': 'styczeń',
+    '02': 'luty',
+    '03': 'marzec',
+    '04': 'kwiecień',
+    '05': 'maj',
+    '06': 'czerwiec',
+    '07': 'lipiec',
+    '08': 'sierpień',
+    '09': 'wrzesień',
+    '10': 'październik',
+    '11': 'listopad',
+    '12': 'grudzień',
+} %}
+<div id="single-wrap-{{ post.id }}" class="single-info__wrap {{ isSingle is defined and isSingle ? '' : 'display-none' }}">
+
+    <div class="single-info__label single-info__label--mobile">
+
+        <div class="single-info__label-info">
+            <div class="single-info__date">
+                {{ post.createdAt|date('d')|first == 0 ? post.createdAt|date('d')|slice(1, 1)  :  post.createdAt|date('d') }}
+                {{ monthsArray[post.createdAt|date('m')] }}
+                {{ post.createdAt|date('Y') }}
+            </div>
+            {% if post.author is not null %}
+                <div class="single-info__author">,&nbsp autor:
+                    <a href="{{ path('user_profile',{'id':post.author.id,'username': post.author.username,'subpage':'dodane'}) }}">{{ post.author.username }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="single-info__wrap-flex">
+        <div data-id="{{ post.id }}"
+             class="single-info__dropdown-item single-info__button--link single-info__button--link-mobile"><i
+                    class="fas fa-link"></i> <span>Kopiuj link</span>
+        </div>
+        <div data-id="{{ post.id }}" data-type="post"
+             class="single-bar__dropdown-item  {{ is_granted('ROLE_USER') ? 'report__init' : 'access-block__init' }}"><i
+                    class="fas fa-exclamation-circle"></i>Zgłoś
+        </div>
+    </div>
+</div>
+
+<div id="single-info-{{ post.id }}" class="single-info {{ isSingle == true ? 'display-flex' : '' }}">
+
+    <div class="single-info__category-wrap">
+        {% for category in post.categories %}
+            <a href="{{ path('sort_category',{'category':category.id,'name':category.name}) }}"
+               class="single-info__category">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+    <div class="single-info__category-wrap single-info__category-wrap--mobile">
+
+        {% for category in post.categories %}
+            <a href="{{ path('sort_category',{'category':category.id,'name':category.name}) }}"
+               class="single-info__category">{{ category.name }}</a>
+        {% endfor %}
+
+{#        {% if post.categories|length > 2 %}#}
+{#            <div data-id="{{ post.id }}" class="single-info__category single-info__category-more">#}
+{#                <i class="fas fa-ellipsis-h"></i>#}
+{#                <div class="single-info__category-dropdown">#}
+{#                    {% for category in post.categories|slice(2, post.categories|length) %}#}
+{#                        <a href="{{ path('sort_category',{'category':category.id,'name':category.name}) }}"#}
+{#                           class="single-info__dropdown-item single-info__category-dropdown--item">#}
+{#                            {{ category.name }}#}
+{#                        </a>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endif %}#}
+
+    </div>
+
+    <div class="single-info__label-wrap single-info__label--desktop">
+        <div class="single-info__label">
+
+            <div class="single-info__label-info">
+                <div class="single-info__date">{{ post.createdAt|date('d')|first == 0 ? post.createdAt|date('d')|slice(1, 1)  :  post.createdAt|date('d') }}
+                    {{ monthsArray[post.createdAt|date('m')] }}
+                    {{ post.createdAt|date('Y') }}
+                </div>
+                {% if post.author is not null %}
+                    <div class="single-info__author">,&nbsp autor:
+                        <a href="{{ path('user_profile',{'id':post.author.id,'username': post.author.username,'subpage':'dodane'}) }}">{{ post.author.username }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>

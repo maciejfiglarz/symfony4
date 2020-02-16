@@ -1,0 +1,29 @@
+{% extends "base.admin.html.twig" %}
+
+{% block body %}
+
+
+    <div class="container__post">
+        <form method="post">
+            <select name="postID" class="form__select-primary">
+                {% for post in  posts %}
+                    <option value="{{ post.id }}">#{{ post.id }} - {{ post.title|slice(0,120) }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <select name="userID" class="form__select-primary">
+                {% for user in  users %}
+                    <option value="{{ user.id }}">#{{ user.id }} - {{ user.username }} {{ user.email }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <div>
+                <textarea name="text" class="textarea-description "></textarea>
+            </div>
+            <div>
+                <input class="button-primary" type="submit" value="Dodaj komentarz">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
